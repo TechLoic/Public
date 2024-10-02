@@ -15,5 +15,19 @@
 		</Action>
 		<Action Type="TSVar" Name="OSDComputerName" >"%ZZComputerName%"</Action>
 		<Action Type="TSVar" Name="OSDBuildType" >"%ZZBuildType%"</Action>
+		<Action Type="Input" Name="LocationChoice" Title="System Location">
+			<ChoiceInput Variable="MyLocation" Question="Please choose a final location for this computer" Required="True" Default="Minneapolis" >
+				<Choice Option="Minneapolis" Value="Minneapolis"/>
+				<Choice Option="Ottawa" Value="Ottawa"/>
+				<Choice Option="Woodbury" Value="Woodbury"/>
+				<Choice Option="Grand Rapids" Value="GrandRapids" />
+				<Choice Option="Phoenix" Value="Phoenix" />
+			</ChoiceInput>
+		</Action>
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Minneapolis"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Ottawa"'>"LDAP://OU=Ottawa,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Woodbury"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "GrandRapids"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Phoenix"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
 	</Actions>
 </UIpp>
