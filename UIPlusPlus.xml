@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<UIpp Title="UGA" Icon="UI++2.ico">
+<UIpp Title="DGDSI UGA" Icon="UI++2.ico">
 	<Actions>
 		<Action Type="UserAuth" Title="Authentication" Domain="labloic.local" MaxRetryCount="5" Group="Admins du domaine" GetGroups="True"/>
+		<Action Type="DefaultValues"/>
+		<Action Type="WMIRead" Variable="ComputerName" Namespace="root\cimv2" Class="Win32_ComputerSystem" Property="Name"/>
+		<Action Type="WMIRead" Variable="CurrentTier" Namespace="root\ITLocal" Class="Local_Config" Property="Tier"/>
 		<Action Type="Info" Name="myInfo" Title="Welcome %XAuthenticatedUser%">
 			<![CDATA[<b>Recast Software - ConfigMgr Docs</b><br> <br>docs.recastsoftware.com<br><br>Demo of UI++, which includes:<br> - All of the power of UI++ 1.0 combined with UI App Tree!<br> - It's UI, <b>interactive </b>, evolved, and customized.<br> <br> Time Taken to Download, read documentation, customize and implement, about 4 hours.]]>
 		</Action>
