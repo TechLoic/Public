@@ -8,7 +8,7 @@
 
 <!-- USER AUTH -->
 		<Action Type="UserAuth" Title="Admin account login:" Domain="labloic.local" GetGroups="True" MaxRetryCount="5" DisableCancel="True" Group="Admins du domaine" >
-			<!--<Field Name="Username" Prompt="Enter your Admin user" Hint="admin-xxx" RegEx="[Aa][Dd][Mm][\w]+" />-->
+			<Field Name="Username" Prompt="Enter your Admin user" Hint="admin-xxx" RegEx="[Aa][Dd][Mm][\w]+" />
 			<!--<Field Name="Domain" List="labloic.local" AutoComplete="true"/>-->
 		</Action>
 
@@ -44,13 +44,13 @@
 				<ChoiceList OptionList="%TS_List%" AlternateValueList="%TS_Codes%" />
 			</InputChoice>			
 			
-			<InputChoice Variable="SelectedSite" AlternateVariable="OSDSite" Question="Select the site:" Required="True">
+			<!--<InputChoice Variable="SelectedSite" AlternateVariable="OSDSite" Question="Select the site:" Required="True">
 				<ChoiceList OptionList="%SiteList%" AlternateValueList="%SiteCodes%" />
-			</InputChoice>
+			</InputChoice>-->
 			
-			<InputCheckbox 	Variable="ChangeDefaults" Question="Change default localization settings" CheckedValue="True" UncheckedValue="False" />
-			<!--<InputCheckbox 	Variable="kiosk" Question="This computer will be a Kiosk" CheckedValue="True" UncheckedValue="False" />-->
-			<InputCheckbox 	Variable="isKiosk" Question="This computer will be a Kiosk device" CheckedValue="True" UncheckedValue="False" />
+			<!--<InputCheckbox 	Variable="ChangeDefaults" Question="Change default localization settings" CheckedValue="True" UncheckedValue="False" />
+			<InputCheckbox 	Variable="kiosk" Question="This computer will be a Kiosk" CheckedValue="True" UncheckedValue="False" />
+			<InputCheckbox 	Variable="isKiosk" Question="This computer will be a Kiosk device" CheckedValue="True" UncheckedValue="False" />-->
 		</Action>
 		
 		<Action Type="Switch" OnValue='%SelectedTS%' DontEval="False">
