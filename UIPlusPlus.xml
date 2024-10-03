@@ -30,7 +30,7 @@
 		<Action Type="TSVar" Name="SMSTSPreferredAdvertID">"LL10000A"</Action>
 		
 <!--  CHOICE VARIABLES DECLARATIONS  -->
-		<Action Type="TSVar" Variable="LangList">"Czech,Chinese Simplified,Dutch,English UK,English US,French,French Canadian,German,Italian,Japanese,Korean,Spanish,Spanish Mexican,Swedish"</Action>
+		<!--<Action Type="TSVar" Variable="LangList">"Czech,Chinese Simplified,Dutch,English UK,English US,French,French Canadian,German,Italian,Japanese,Korean,Spanish,Spanish Mexican,Swedish"</Action>
 		<Action Type="TSVar" Variable="LangCodes">"cs-CZ,zh-CN,nl-NL,en-GB,en-US,fr-FR,fr-CA,de-DE,it-IT,ja-JP,ko-KR,es-ES,es-MX,sv-SE"</Action>
 		
 		<Action Type="TSVar" Variable="SiteList">"LON - London,NYC - New York,PAR - Paris,TKY - Tokyo"</Action>
@@ -80,7 +80,7 @@
 					<ChoiceList OptionList="%KeybList%" AlternateValueList="%KeybCodes%"/>
 				</InputChoice>			
 			</Action>
-		</ActionGroup>	
+		</ActionGroup>	-->
 
 <!-- SUMMARY WINDOW -->
 		<Action Type="Info" Name="Summary" Title="Summary" ShowBack="False" > 
