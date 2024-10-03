@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UIpp Title="DGDSI UGA" Icon="UI++2.ico" Color="#444444">
+	<Actions>
+		<Action Type="DefaultValues"/>
+
+<!--  START MAIN THREAD   -->	
+		<ActionGroup Name="MAIN THREAD">	
+
+<!-- USER AUTH -->
+		<Action Type="UserAuth" Title="Admin account login:" Domain="labloic.local" GetGroups="True" MaxRetryCount="5" DisableCancel="True" Group="Admins du domaine" >
+			<!--<Field Name="Username" Prompt="Enter your Admin user" Hint="admin-xxx" RegEx="[Aa][Dd][Mm][\w]+"/>-->
+			<!--<Field Name="Domain" List="labloic.local" AutoComplete="true"/>-->
+		</Action>
+
+<!-- STARTUP SCREEN -->
+		<Action Type="Info" Name="Startup" Title="Welcome %XAuthenticatedUserDisplayName%!" Image="x:\sms\PKG\sms10000\UIpp\<mycompany>.jpg" ShowCancel="False" Timeout="0" TimeoutAction="Continue">
+			<![CDATA[<MyCompany> OS Deployment is now <b>interactive</b> and customized!<br><br>
+				<b>Modèle :</b> %XHWModel%<br>
+				<b>Type :</b> %XHWChassisType%<br>
+				<b>Numéro de série :</b> %XHWSerialNumber%<br>
+				<b>Adresse IP :</b> %XIPAddress%<br>
+			]]>
+		</Action>	
+
+<!-- SET PREFERRED TASK SEQUENCE DEPLOYMENT ID AND SERVICE CODE -->
+		<Action Type="TSVar" Variable="TS_List">"Windows 11,Windows 11 - TEST"</Action>
+		<Action Type="TSVar" Variable="TS_Codes">"LL10000A,LL100038"</Action>
+		<Action Type="TSVar" Variable="ITServiceCode">"0000"</Action>
+		<Action Type="TSVar" Variable="SelectedTS">"LL10000A"</Action>
+		<Action Type="TSVar" Name="SMSTSPreferredAdvertID">"LL10000A"</Action>
+		
+<!--  CHOICE VARIABLES DECLARATIONS  -->
+		<Action Type="TSVar" Variable="LangList">"Czech,Chinese Simplified,Dutch,English UK,English US,French,French Canadian,German,Italian,Japanese,Korean,Spanish,Spanish Mexican,Swedish"</Action>
+		<Action Type="TSVar" Variable="LangCodes">"cs-CZ,zh-CN,nl-NL,en-GB,en-US,fr-FR,fr-CA,de-DE,it-IT,ja-JP,ko-KR,es-ES,es-MX,sv-SE"</Action>
+		
+		<Action Type="TSVar" Variable="SiteList">"LON - London,NYC - New York,PAR - Paris,TKY - Tokyo"</Action>
+		<Action Type="TSVar" Variable="SiteCodes">"LON,NYC,PAR,TKY"</Action>
+		
+		<Action Type="TSVar" Variable="KeybList">"Belgian,Chinese Simplified,Dutch,English India,English Singapore,English UK,English US,French,French Canadian,German,German Swiss,Hungarian,Italian,Japanese,Korean,Portuguese Brazilian,Spanish,Spanish Mexican,Swedish"</Action>
+		<Action Type="TSVar" Variable="KeybCodes">"nl-BE,zh-CN,nl-NL,en-IN,en-SG,en-GB,en-US,fr-FR,fr-CA,de-DE,de-CH,hu-HU,it-IT,ja-JP,ko-KR,pt-BR,es-ES,es-MX,sv-SE"</Action>
+
+<!--  SITE SELECTION SCREEN WITH SITE PRE-LOADED FROM IP ADDRESS ABOVE -->
+		<Action Type="Input" Name="SiteSelectionScreen" Title="Input selection" Timeout="30">
+			<InputChoice Variable="SelectedTS" Question="Select Image:" Required="True">
+				<ChoiceList OptionList="%TS_List%" AlternateValueList="%TS_Codes%"/>
+			</InputChoice>		
+			
+			<!--<InputChoice Variable="SelectedSite" AlternateVariable="OSDSite" Question="Select the site:" Required="True">
+				<ChoiceList OptionList="%SiteList%" AlternateValueList="%SiteCodes%"/>
+			</InputChoice>-->
+			
+			<!--<InputCheckbox 	Variable="ChangeDefaults" Question="Change default localization settings" CheckedValue="True" UncheckedValue="False"/>
+			<InputCheckbox 	Variable="kiosk" Question="This computer will be a Kiosk" CheckedValue="True" UncheckedValue="False"/>
+			<InputCheckbox 	Variable="isKiosk" Question="This computer will be a Kiosk device" CheckedValue="True" UncheckedValue="False"/>-->
+		</Action>
+		
+		<Action Type="Switch" OnValue='%SelectedTS%' DontEval="False">
+			<Case RegEx="^PROD Win10">
+				<Variable Name="SMSTSPreferredAdvertID">"SCD0001"</Variable>
+			</Case>
+			<Case RegEx="^PROD Win11">
+				<Variable Name="SMSTSPreferredAdvertID">"SCD0002"</Variable>
+			</Case>
+			<Case RegEx="^TEST Win11">
+				<Variable Name="SMSTSPreferredAdvertID">"SCD0003"</Variable>
+			</Case>
+		</Action>
+
+<!--  ****************  CHANGE DEFAULT LOCALIZATION SETTINGS ****************** -->
+		<ActionGroup Name="Customization" Condition='"%ChangeDefaults%" = "True"'>
+			
+	<!--   CHANGE DEFAULT LANGUAGE   -->
+			<Action Type="Input" Name="myInput" Title="Please answer the following" ShowBack="True">
+				<InputChoice Variable="UILanguage" AlternateVariable="OSDWindowsSettingsUILanguage" Question="Windows Language:" Required="True">
+					<ChoiceList OptionList="%LangList%" AlternateValueList="%LangCodes%"/>
+				</InputChoice>
+				
+	<!--   CHANGE DEFAULT KEYBOARD - this changes the locale for that input too  -->
+				<InputChoice Variable="KeyboardLayout" Question="Keyboard Layout:" Required="True">
+					<ChoiceList OptionList="%KeybList%" AlternateValueList="%KeybCodes%"/>
+				</InputChoice>			
+			</Action>
+		</ActionGroup>	
+
+<!-- SUMMARY WINDOW -->
+		<Action Type="Info" Name="Summary" Title="Summary" ShowBack="False" > 
+			<![CDATA[Values based on previous selections: <br><hr>
+				<b>Nom de l'ordinateur :</b>  %OSDComputerName%<br>
+				<b>Domain Name :</b>  %OSDDomainName%<br>
+				<b>Windows Language :</b>  %UILanguage%<br>
+				<b>Disposition de clavier :</b>  %KeyboardLayout%<br>
+				<b>Adresse IP :</b> %XIPAddress%<br>
+			]]>
+		</Action> 
+		</ActionGroup>
+	</Actions>
+</UIpp>
