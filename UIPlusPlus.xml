@@ -27,6 +27,7 @@
 		<Action Type="TSVar" Variable="TS_Codes">"LL10000A,LL100038"</Action>
 		<Action Type="TSVar" Variable="ITServiceCode">"0000"</Action>
 		<Action Type="TSVar" Variable="SelectedTS">"LL10000A"</Action>
+		<Action Type="TSVar" Name="SMSTSPreferredAdvertID">"LL10000A"</Action>
 		
 <!--  CHOICE VARIABLES DECLARATIONS  -->
 		<Action Type="TSVar" Variable="LangList">"Czech,Chinese Simplified,Dutch,English UK,English US,French,French Canadian,German,Italian,Japanese,Korean,Spanish,Spanish Mexican,Swedish"</Action>
@@ -41,16 +42,16 @@
 <!--  SITE SELECTION SCREEN WITH SITE PRE-LOADED FROM IP ADDRESS ABOVE -->
 		<Action Type="Input" Name="SiteSelectionScreen" Title="Input selection" Timeout="30">
 			<InputChoice Variable="SelectedTS" Question="Select Image:" Required="True">
-				<ChoiceList OptionList="%TS_List%" AlternateValueList="%TS_Codes%" />
-			</InputChoice>			
+				<ChoiceList OptionList="%TS_List%" AlternateValueList="%TS_Codes%"/>
+			</InputChoice>		
 			
 			<!--<InputChoice Variable="SelectedSite" AlternateVariable="OSDSite" Question="Select the site:" Required="True">
-				<ChoiceList OptionList="%SiteList%" AlternateValueList="%SiteCodes%" />
+				<ChoiceList OptionList="%SiteList%" AlternateValueList="%SiteCodes%"/>
 			</InputChoice>-->
 			
-			<!--<InputCheckbox 	Variable="ChangeDefaults" Question="Change default localization settings" CheckedValue="True" UncheckedValue="False" />
-			<InputCheckbox 	Variable="kiosk" Question="This computer will be a Kiosk" CheckedValue="True" UncheckedValue="False" />
-			<InputCheckbox 	Variable="isKiosk" Question="This computer will be a Kiosk device" CheckedValue="True" UncheckedValue="False" />-->
+			<!--<InputCheckbox 	Variable="ChangeDefaults" Question="Change default localization settings" CheckedValue="True" UncheckedValue="False"/>
+			<InputCheckbox 	Variable="kiosk" Question="This computer will be a Kiosk" CheckedValue="True" UncheckedValue="False"/>
+			<InputCheckbox 	Variable="isKiosk" Question="This computer will be a Kiosk device" CheckedValue="True" UncheckedValue="False"/>-->
 		</Action>
 		
 		<Action Type="Switch" OnValue='%SelectedTS%' DontEval="False">
@@ -71,12 +72,12 @@
 	<!--   CHANGE DEFAULT LANGUAGE   -->
 			<Action Type="Input" Name="myInput" Title="Please answer the following" ShowBack="True">
 				<InputChoice Variable="UILanguage" AlternateVariable="OSDWindowsSettingsUILanguage" Question="Windows Language:" Required="True">
-					<ChoiceList OptionList="%LangList%" AlternateValueList="%LangCodes%" />
+					<ChoiceList OptionList="%LangList%" AlternateValueList="%LangCodes%"/>
 				</InputChoice>
 				
 	<!--   CHANGE DEFAULT KEYBOARD - this changes the locale for that input too  -->
 				<InputChoice Variable="KeyboardLayout" Question="Keyboard Layout:" Required="True">
-					<ChoiceList OptionList="%KeybList%" AlternateValueList="%KeybCodes%" />
+					<ChoiceList OptionList="%KeybList%" AlternateValueList="%KeybCodes%"/>
 				</InputChoice>			
 			</Action>
 		</ActionGroup>	
