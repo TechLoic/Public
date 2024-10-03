@@ -55,14 +55,11 @@
 		</Action>
 		
 		<Action Type="Switch" OnValue='%SelectedTS%' DontEval="False">
-			<Case RegEx="^PROD Win10">
-				<Variable Name="SMSTSPreferredAdvertID">"SCD0001"</Variable>
+			<Case RegEx="^Windows 11">
+				<Variable Name="SMSTSPreferredAdvertID">"LL10000A"</Variable>
 			</Case>
-			<Case RegEx="^PROD Win11">
-				<Variable Name="SMSTSPreferredAdvertID">"SCD0002"</Variable>
-			</Case>
-			<Case RegEx="^TEST Win11">
-				<Variable Name="SMSTSPreferredAdvertID">"SCD0003"</Variable>
+			<Case RegEx="^Windows 11 - TEST">
+				<Variable Name="SMSTSPreferredAdvertID">"L100038"</Variable>
 			</Case>
 		</Action>
 
