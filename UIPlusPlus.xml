@@ -28,30 +28,12 @@
 		<Action Type="TSVar" Variable="ITServiceCode">"0000"</Action>
 		<Action Type="TSVar" Variable="SelectedTS">"LL10000A"</Action>
 		<Action Type="TSVar" Name="SMSTSPreferredAdvertID">"LL10000A"</Action>
-		
-<!--  CHOICE VARIABLES DECLARATIONS  -->
-		<Action Type="TSVar" Variable="LangList">"Czech,Chinese Simplified,Dutch,English UK,English US,French,French Canadian,German,Italian,Japanese,Korean,Spanish,Spanish Mexican,Swedish"</Action>
-		<Action Type="TSVar" Variable="LangCodes">"cs-CZ,zh-CN,nl-NL,en-GB,en-US,fr-FR,fr-CA,de-DE,it-IT,ja-JP,ko-KR,es-ES,es-MX,sv-SE"</Action>
-		
-		<Action Type="TSVar" Variable="SiteList">"LON - London,NYC - New York,PAR - Paris,TKY - Tokyo"</Action>
-		<Action Type="TSVar" Variable="SiteCodes">"LON,NYC,PAR,TKY"</Action>
-		
-		<Action Type="TSVar" Variable="KeybList">"Belgian,Chinese Simplified,Dutch,English India,English Singapore,English UK,English US,French,French Canadian,German,German Swiss,Hungarian,Italian,Japanese,Korean,Portuguese Brazilian,Spanish,Spanish Mexican,Swedish"</Action>
-		<Action Type="TSVar" Variable="KeybCodes">"nl-BE,zh-CN,nl-NL,en-IN,en-SG,en-GB,en-US,fr-FR,fr-CA,de-DE,de-CH,hu-HU,it-IT,ja-JP,ko-KR,pt-BR,es-ES,es-MX,sv-SE"</Action>
 
 <!--  SITE SELECTION SCREEN WITH SITE PRE-LOADED FROM IP ADDRESS ABOVE -->
 		<Action Type="Input" Name="SiteSelectionScreen" Title="Input selection" Timeout="30">
 			<InputChoice Variable="SelectedTS" Question="Select Image:" Required="True">
 				<ChoiceList OptionList="%TS_List%" AlternateValueList="%TS_Codes%"/>
-			</InputChoice>		
-			
-			<!--<InputChoice Variable="SelectedSite" AlternateVariable="OSDSite" Question="Select the site:" Required="True">
-				<ChoiceList OptionList="%SiteList%" AlternateValueList="%SiteCodes%"/>
-			</InputChoice>-->
-			
-			<!--<InputCheckbox 	Variable="ChangeDefaults" Question="Change default localization settings" CheckedValue="True" UncheckedValue="False"/>
-			<InputCheckbox 	Variable="kiosk" Question="This computer will be a Kiosk" CheckedValue="True" UncheckedValue="False"/>
-			<InputCheckbox 	Variable="isKiosk" Question="This computer will be a Kiosk device" CheckedValue="True" UncheckedValue="False"/>-->
+			</InputChoice>
 		</Action>
 		
 		<Action Type="Switch" OnValue='%SelectedTS%' DontEval="False">
@@ -62,6 +44,31 @@
 				<Variable Name="SMSTSPreferredAdvertID">"L100038"</Variable>
 			</Case>
 		</Action>
+
+		<Action Type="Input" Name="ClientSetupInput" Title="Client Setup" ShowBack="True">
+			<TextInput Prompt="Computer Name" Hint="Enter the name for this system" RegEx="[^\&quot;/\\\[\]:;\|=,\+\*\?&gt;&lt;]{3,15}" Variable="ZZComputerName" Question="Name for this system" Default="%_SMSTSMachineName%"/>
+			<ChoiceInput Variable="ZZBuildType" Question="Please select the build type for this system" Required="True" Default="2009">
+				<Choice Option="Windows 10 1909" Value="1909" />
+				<Choice Option="Windows 10 20H2" Value="2009" />
+			</ChoiceInput>
+			<CheckboxInput Variable="ZZExtraLogging" Question="Enable extra logging" CheckedValue="True" UncheckedValue="False" Default="True"/>
+		</Action>
+		<Action Type="TSVar" Name="OSDComputerName" >"%ZZComputerName%"</Action>
+		<Action Type="TSVar" Name="OSDBuildType" >"%ZZBuildType%"</Action>
+		<Action Type="Input" Name="LocationChoice" Title="System Location">
+			<ChoiceInput Variable="MyLocation" Question="Please choose a final location for this computer" Required="True" Default="Minneapolis" >
+				<Choice Option="Minneapolis" Value="Minneapolis"/>
+				<Choice Option="Ottawa" Value="Ottawa"/>
+				<Choice Option="Woodbury" Value="Woodbury"/>
+				<Choice Option="Grand Rapids" Value="GrandRapids" />
+				<Choice Option="Phoenix" Value="Phoenix" />
+			</ChoiceInput>
+		</Action>
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Minneapolis"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Ottawa"'>"LDAP://OU=Ottawa,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Woodbury"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "GrandRapids"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Phoenix"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
 
 <!--  ****************  CHANGE DEFAULT LOCALIZATION SETTINGS ****************** -->
 		<ActionGroup Name="Customization" Condition='"%ChangeDefaults%" = "True"'>
