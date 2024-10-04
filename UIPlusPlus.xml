@@ -13,8 +13,8 @@
 		</Action>
 
 <!-- STARTUP SCREEN -->
-		<Action Type="Info" Name="Startup" Title="Welcome %XAuthenticatedUserDisplayName%!" Image="x:\sms\PKG\sms10000\UIpp\<mycompany>.jpg" ShowCancel="False" Timeout="0" TimeoutAction="Continue">
-			<![CDATA[<MyCompany> OS Deployment is now <b>interactive</b> and customized!<br><br>
+		<Action Type="Info" Name="Startup" Title="Welcome %XAuthenticatedUserDisplayName%!" Image="topbanner.png" ShowCancel="False" Timeout="0" TimeoutAction="Continue">
+			<![CDATA[UGA OS Deployment is now <b>interactive</b> and customized!<br><br>
 				<b>Modèle :</b> %XHWModel%<br>
 				<b>Type :</b> %XHWChassisType%<br>
 				<b>Numéro de série :</b> %XHWSerialNumber%<br>
