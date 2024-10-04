@@ -57,38 +57,58 @@
 		<Action Type="TSVar" Name="OSDBuildType" >"%ZZBuildType%"</Action>
 		<Action Type="Input" Name="LocationChoice" Title="System Location">
 			<ChoiceInput Variable="MyLocation" Question="Please choose a final location for this computer" Required="True" Default="Minneapolis" >
-				<Choice Option="Minneapolis" Value="Minneapolis"/>
-				<Choice Option="Ottawa" Value="Ottawa"/>
-				<Choice Option="Woodbury" Value="Woodbury"/>
-				<Choice Option="Grand Rapids" Value="GrandRapids" />
-				<Choice Option="Phoenix" Value="Phoenix" />
+				<Choice Option="Minneapolis" Value="Minneapolis1"/>
+				<Choice Option="Ottawa" Value="Ottawa1"/>
+				<Choice Option="Woodbury" Value="Woodbury1"/>
+				<Choice Option="Grand Rapids" Value="GrandRapids1" />
+				<Choice Option="Phoenix" Value="Phoenix1"/>
+				<Choice Option="Minneapolis" Value="Minneapolis2"/>
+				<Choice Option="Ottawa" Value="Ottawa2"/>
+				<Choice Option="Woodbury" Value="Woodbury2"/>
+				<Choice Option="Grand Rapids" Value="GrandRapids2" />
+				<Choice Option="Phoenix" Value="Phoenix2"/>
+				<Choice Option="Minneapolis" Value="Minneapolis3"/>
+				<Choice Option="Ottawa" Value="Ottawa3"/>
+				<Choice Option="Woodbury" Value="Woodbury3"/>
+				<Choice Option="Grand Rapids" Value="GrandRapids3" />
+				<Choice Option="Phoenix" Value="Phoenix3"/>
+				<Choice Option="Minneapolis" Value="Minneapolis4"/>
+				<Choice Option="Ottawa" Value="Ottawa4"/>
+				<Choice Option="Woodbury" Value="Woodbury4"/>
+				<Choice Option="Grand Rapids" Value="GrandRapids4" />
+				<Choice Option="Phoenix" Value="Phoenix4"/>
+				<Choice Option="Minneapolis" Value="Minneapolis5"/>
+				<Choice Option="Ottawa" Value="Ottawa5"/>
+				<Choice Option="Woodbury" Value="Woodbury5"/>
+				<Choice Option="Grand Rapids" Value="GrandRapids5" />
+				<Choice Option="Phoenix" Value="Phoenix5"/>
 			</ChoiceInput>
 		</Action>
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Minneapolis"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Ottawa"'>"LDAP://OU=Ottawa,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Woodbury"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "GrandRapids"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Phoenix"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Minneapolis"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Ottawa"'>"LDAP://OU=Ottawa,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Woodbury"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "GrandRapids"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Phoenix"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Minneapolis"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Ottawa"'>"LDAP://OU=Ottawa,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Woodbury"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "GrandRapids"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Phoenix"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Minneapolis"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Ottawa"'>"LDAP://OU=Ottawa,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Woodbury"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "GrandRapids"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Phoenix"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Minneapolis"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Ottawa"'>"LDAP://OU=Ottawa,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Woodbury"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "GrandRapids"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
-		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Phoenix"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Minneapolis1"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Ottawa1"'>"LDAP://OU=Ottawa,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Woodbury1"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "GrandRapids1"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Phoenix1"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Minneapolis2"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Ottawa2"'>"LDAP://OU=Ottawa,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Woodbury2"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "GrandRapids2"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Phoenix2"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Minneapolis3"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Ottawa3"'>"LDAP://OU=Ottawa,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Woodbury3"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "GrandRapids3"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Phoenix3"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Minneapolis4"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Ottawa4"'>"LDAP://OU=Ottawa,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Woodbury4"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "GrandRapids4"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Phoenix4"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Minneapolis5"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Ottawa5"'>"LDAP://OU=Ottawa,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Woodbury5"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "GrandRapids5"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
+		<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%MyLocation%" = "Phoenix5"'>"LDAP://OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action> 
 
 <!--  ****************  CHANGE DEFAULT LOCALIZATION SETTINGS ****************** -->
 		<ActionGroup Name="Customization" Condition='"%ChangeDefaults%" = "True"'>
