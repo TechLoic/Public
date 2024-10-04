@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <UIpp Title="DGDSI UGA" Icon="UI++2_UGA.ico" Color="#444444">
 	<Actions>
-		<Action Type="DefaultValues"/>
 
-<!--  START MAIN THREAD   -->	
-		<ActionGroup Name="MAIN THREAD">	
+<!--  START MAIN THREAD   -->
+		<Action Type="DefaultValues" ValueTypes="Asset,Net,TPM,VM"/>
+		<ActionGroup Name="MAIN THREAD">
 
 <!-- USER AUTH -->
 		<Action Type="UserAuth" Title="Authentification" Domain="labloic.local" GetGroups="True" MaxRetryCount="5" DisableCancel="True" Group="Admins du domaine" >
@@ -20,6 +20,9 @@
 				<b>Type :</b> %XHWChassisType%<br>
 				<b>Numéro de série :</b> %XHWSerialNumber%<br>
 				<b>Adresse IP :</b> %XIPAddress%<br>
+				<b>Puce TPM :</b> %XTPMEnabled%<br>
+				<b>Secure Boot :</b> %XSystemSecureBoot%<br>
+				<b>VM :</b> %XHWVirtualMachineType%<br>
 			]]>
 		</Action>	
 
