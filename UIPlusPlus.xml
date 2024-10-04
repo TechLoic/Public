@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<UIpp Title="DGDSI UGA" Icon="UI++2.ico" Color="#444444">
+<UIpp Title="DGDSI UGA" Icon="UI++2_UGA.ico" Color="#444444">
 	<Actions>
 		<Action Type="DefaultValues"/>
 
