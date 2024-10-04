@@ -10,17 +10,16 @@
 		<Action Type="UserAuth" Title="Authentification" Domain="labloic.local" GetGroups="True" MaxRetryCount="5" DisableCancel="True" Group="Admins du domaine" >
 			<Field Name="Username" Prompt="Veuillez respecter le schéma suivante" Hint="admin-xxx" RegEx="admin-[A-Za-z0-9]+"/>
 			<Field Name="Password" Prompt="Custom Username Prompt" Hint="Custom Username Hint"/>
-			<Field Name="Domain" List="labloic.local" AutoComplete="true"/>
+			<!--<Field Name="Domain" List="labloic.local" AutoComplete="true"/>-->
 		</Action>
 
 <!-- STARTUP SCREEN -->
 		<Action Type="Info" Name="Startup" Title="Bienvenue %XAuthenticatedUserDisplayName% !" Image="topbanner.png" ShowCancel="False" Timeout="0" TimeoutAction="Continue">
 			<![CDATA[UGA OS Deployment is now <b>interactive</b> and customized!<br><br>
 				<b>Modèle :</b> %XHWModel%<br>
-				<b>Type :</b> %XHWChassisType%<br>
 				<b>Numéro de série :</b> %XHWSerialNumber%<br>
 				<b>Adresse IP :</b> %XIPAddress%<br>
-				<b>Puce TPM :</b> %XTPMEnabled%<br>
+				<b>Puce TPM :</b> %XTPMEnabled% (v%XTPMSpecVersion%)<br>
 				<b>Secure Boot :</b> %XSystemSecureBoot%<br>
 				<b>VM :</b> %XHWVirtualMachineType%<br>
 			]]>
