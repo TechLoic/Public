@@ -29,6 +29,7 @@
 		<Action Type="TSVar" Variable="TS_Codes">"LL12000F,LL120012"</Action>
 		<Action Type="TSVar" Variable="ITServiceCode">"0000"</Action>
 		<Action Type="TSVar" Variable="SelectedTS">"LL12000F"</Action>
+		<Action Type="TSVar" Name="SMSTSPreferredAdvertID">"LL12000F"</Action>
 
 <!--  CHOICE VARIABLES DECLARATIONS  -->
 
@@ -42,7 +43,21 @@
 		<Action Type="TSVar" Variable="KeybCodes">"nl-BE,zh-CN,nl-NL,en-IN,en-SG,en-GB,en-US,fr-FR,fr-CA,de-DE,de-CH,hu-HU,it-IT,ja-JP,ko-KR,pt-BR,es-ES,es-MX,sv-SE"</Action>
 
 <!--  SITE SELECTION SCREEN WITH SITE PRE-LOADED FROM IP ADDRESS ABOVE -->
-
+		<Action Type="Input" Name="SiteSelectionScreen" Title="Input selection" Timeout="0">
+			<InputChoice Variable="SelectedTS" Question="Select Image:" Required="True">
+				<ChoiceList OptionList="%TS_List%" AlternateValueList="%TS_Codes%"/>
+			</InputChoice>
+			<InputCheckbox 	Variable="ChangeDefaults" Question="Change default localization settings" CheckedValue="True" UncheckedValue="False" />
+		</Action>
+		
+		<Action Type="Switch" OnValue='%SelectedTS%' DontEval="False">
+			<Case RegEx="Windows 11">
+				<Variable Name="SMSTSPreferredAdvertID">"LL12000F"</Variable>
+			</Case>
+			<Case RegEx="Windows 11 - TEST">
+				<Variable Name="SMSTSPreferredAdvertID">"LL120012"</Variable>
+			</Case>
+		</Action>
 
 <!--  Setting KEYBOARD / LOCALE / TIMEZONE defaults for sites with REGEX matching  -->
 		<Action Type="Switch" OnValue='%OSDSite%' DontEval="False">
@@ -97,23 +112,6 @@
 				<Variable Name="OSDWindowsSettingsInputLocale">"en-US"</Variable>
 				<Variable Name="OSDWindowsSettingsUserLocale">"en-US"</Variable>
 				<Variable Name="OSDTimeZone">"Central Standard Time"</Variable>
-			</Case>
-		</Action>
-
-		
-		<Action Type="Input" Name="SiteSelectionScreen" Title="Input selection" Timeout="0">
-			<InputChoice Variable="SelectedTS" Question="Select Image:" Required="True">
-				<ChoiceList OptionList="%TS_List%" AlternateValueList="%TS_Codes%"/>
-			</InputChoice>
-			<InputCheckbox 	Variable="ChangeDefaults" Question="Change default localization settings" CheckedValue="True" UncheckedValue="False" />
-		</Action>
-		
-		<Action Type="Switch" OnValue='%SelectedTS%' DontEval="False">
-			<Case RegEx="Windows 11">
-				<Variable Name="SMSTSPreferredAdvertID">"LL12000F"</Variable>
-			</Case>
-			<Case RegEx="Windows 11 - TEST">
-				<Variable Name="SMSTSPreferredAdvertID">"LL120012"</Variable>
 			</Case>
 		</Action>
 
