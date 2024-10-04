@@ -13,7 +13,7 @@
 		</Action>
 
 <!-- STARTUP SCREEN -->
-		<Action Type="Info" Name="Startup" Title="Welcome %XAuthenticatedUserDisplayName%!" Image="topbanner.png" ShowCancel="False" Timeout="0" TimeoutAction="Continue">
+		<Action Type="Info" Name="Startup" Title="Bienvenue %XAuthenticatedUserDisplayName% !" Image="topbanner.png" ShowCancel="False" Timeout="0" TimeoutAction="Continue">
 			<![CDATA[UGA OS Deployment is now <b>interactive</b> and customized!<br><br>
 				<b>Modèle :</b> %XHWModel%<br>
 				<b>Type :</b> %XHWChassisType%<br>
