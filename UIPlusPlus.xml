@@ -15,7 +15,7 @@
 
 <!-- STARTUP SCREEN -->
 		<Action Type="Info" Name="Startup" Title="Bienvenue %XAuthenticatedUserDisplayName% !" Image="topbanner.png" ShowCancel="False" Timeout="0" TimeoutAction="Continue">
-			<![CDATA[UGA OS Deployment is now <b>interactive</b> and customized!<br><br>
+			<![CDATA[Bienvenue sur l'outil de déploiement de l'UGA<br><br>
 				<b>Modèle :</b> %XHWModel%<br>
 				<b>Numéro de série :</b> %XHWSerialNumber%<br>
 				<b>Adresse IP :</b> %XIPAddress%<br>
