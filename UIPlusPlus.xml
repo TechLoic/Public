@@ -3,7 +3,7 @@
 	<Actions>
 
 <!--  START MAIN THREAD   -->
-		<Action Type="DefaultValues" ValueTypes="Asset,Net,TPM"/>
+		<Action Type="DefaultValues"/>
 		<ActionGroup Name="MAIN THREAD">
 
 <!-- USER AUTH -->
