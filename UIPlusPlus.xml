@@ -3,7 +3,7 @@
 	<Actions>
 
 <!--  START MAIN THREAD   -->
-		<Action Type="DefaultValues" ValueTypes="Asset,Net,TPM,VM"/>
+		<Action Type="DefaultValues" ValueTypes="Asset,Net,TPM"/>
 		<ActionGroup Name="MAIN THREAD">
 
 <!-- USER AUTH -->
@@ -19,9 +19,8 @@
 				<b>Modèle :</b> %XHWModel%<br>
 				<b>Numéro de série :</b> %XHWSerialNumber%<br>
 				<b>Adresse IP :</b> %XIPAddress%<br>
-				<b>Puce TPM :</b> %XTPMEnabled% (v%XTPMSpecVersion%)<br>
-				<b>Secure Boot :</b> %XSystemSecureBoot%<br>
-				<b>VM :</b> %XHWVirtualMachineType%<br>
+				<b>Puce TPM activé ? :</b> %XTPMEnabled%<br>
+				<b>Secure Boot activé ? :</b> %XSystemSecureBoot%<br>
 			]]>
 		</Action>	
 
