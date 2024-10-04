@@ -308,8 +308,8 @@
 
 <!-- SET ADDITIONAL VARIABLES -->
 
-		<Action Type="TSVar" Name="OSDComputerName">"%OSDSite%" & "X" & "%XHWSerialNumber%"</Action>
-		<Action Type="TSVar" Name="OSDLocalAdminPassword">Left("%XHWSerialNumber%",4) & "I@m4hack3r" & Right("%XHWSerialNumber%",3)</Action>
+		<!--<Action Type="TSVar" Name="OSDComputerName">"%OSDSite%" & "X" & "%XHWSerialNumber%"</Action>-->
+		<!--<Action Type="TSVar" Name="OSDLocalAdminPassword">Left("%XHWSerialNumber%",4) & "I@m4hack3r" & Right("%XHWSerialNumber%",3)</Action>-->
 		<Action Type="TSVar" Name="OSDWindowsSettingsUILanguageFallback">"en-US"</Action> 	
 
 <!-- SUMMARY WINDOW -->
