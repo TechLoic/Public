@@ -24,10 +24,10 @@
 
 <!-- SET PREFERRED TASK SEQUENCE DEPLOYMENT ID AND SERVICE CODE -->
 		<Action Type="TSVar" Variable="TS_List">"Windows 11,Windows 11 - TEST"</Action>
-		<Action Type="TSVar" Variable="TS_Codes">"LL10000A,LL100038"</Action>
+		<Action Type="TSVar" Variable="TS_Codes">"LL12000F,LL120012"</Action>
 		<Action Type="TSVar" Variable="ITServiceCode">"0000"</Action>
-		<Action Type="TSVar" Variable="SelectedTS">"LL10000A"</Action>
-		<Action Type="TSVar" Name="SMSTSPreferredAdvertID">"LL10000A"</Action>
+		<Action Type="TSVar" Variable="SelectedTS">"LL12000F"</Action>
+		<Action Type="TSVar" Name="SMSTSPreferredAdvertID">"LL12000F"</Action>
 
 <!--  SITE SELECTION SCREEN WITH SITE PRE-LOADED FROM IP ADDRESS ABOVE -->
 		<Action Type="Input" Name="SiteSelectionScreen" Title="Input selection" Timeout="30">
@@ -38,10 +38,10 @@
 		
 		<Action Type="Switch" OnValue='%SelectedTS%' DontEval="False">
 			<Case RegEx="^Windows 11">
-				<Variable Name="SMSTSPreferredAdvertID">"LL10000A"</Variable>
+				<Variable Name="SMSTSPreferredAdvertID">"LL12000F"</Variable>
 			</Case>
 			<Case RegEx="^Windows 11 - TEST">
-				<Variable Name="SMSTSPreferredAdvertID">"L100038"</Variable>
+				<Variable Name="SMSTSPreferredAdvertID">"LL120012"</Variable>
 			</Case>
 		</Action>
 
