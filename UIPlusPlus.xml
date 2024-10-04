@@ -8,7 +8,8 @@
 
 <!-- USER AUTH -->
 		<Action Type="UserAuth" Title="Admin account login:" Domain="labloic.local" GetGroups="True" MaxRetryCount="5" DisableCancel="True" Group="Admins du domaine" >
-			<Field Name="Username" Prompt="Enter your Admin user" Hint="admin-xxx" RegEx="admin-[A-Za-z0-9]+"/>
+			<Field Name="Username" Prompt="Veuillez respecter le schéma suivante" Hint="admin-xxx" RegEx="admin-[A-Za-z0-9]+"/>
+			<Field Name="Password" Prompt="Custom Username Prompt" Hint="Custom Username Hint"/>
 			<!--<Field Name="Domain" List="labloic.local" AutoComplete="true"/>-->
 		</Action>
 
