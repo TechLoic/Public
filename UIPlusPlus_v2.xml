@@ -23,7 +23,7 @@
 				<![CDATA[Bienvenue sur l'outil de déploiement de l'UGA<br><br>
 					<b>💻 Modèle :</b> %XHWModel%<br>
 					<b>🔢 Numéro de série :</b> %XHWSerialNumber%<br>
-					<b>🌐 Adresse IP :</b> %XIPAddress%<br>
+					<b>🌐 Adresse IP :</b> %XIPAddress% (%XMACAddress%)<br>
 					<b>⚙️ Puce TPM :</b> %XTPMEnabled%<br>
 					<b>🔒 Secure Boot :</b> %XSystemSecureBoot%<br>
 				]]>
@@ -46,7 +46,8 @@
 					<Choice Option="Windows 11" Value="TS_Windows-11"/>
 					<Choice Option="Windows 11 - TEST" Value="TS_Windows-11-TEST"/>
 				</InputChoice>
-				<InputCheckbox Variable="ChangeDefaults" Question="Modifier les paramètres de localisation par défaut" CheckedValue="True" UncheckedValue="False"/>
+				<InputCheckbox Variable="BaseBundle" Question="Installer le bundle de base" CheckedValue="True" UncheckedValue="False" Default="True"/>
+				<InputCheckbox Variable="ChangeDefaults" Question="Modifier les paramètres de localisation par défaut" CheckedValue="True" UncheckedValue="False" Default="False"/>
 			</Action>
 
 <!-- VARIABLES COMPUTER NAME -->
@@ -55,6 +56,9 @@
 <!-- VARIABLES TASK SEQUENCE -->
 			<Action Type="TSVar" Name="SMSTSPreferredAdvertID" Condition='"%SelectTSInputChoice%" = "TS_Windows-11"'>"LL12000F"'</Action>
 			<Action Type="TSVar" Name="SMSTSPreferredAdvertID" Condition='"%SelectTSInputChoice%" = "TS_Windows-11-TEST"'>"LL120012"'</Action>
+
+<!-- VARIABLES BASE BUNDLE -->
+
 
 <!-- SELECT TOP BRANCH ACTIVE DIRECTORY -->
 			<Action Type="Input" Name="TopBranchAction" Title="Groupe principal" ShowBack="True">
