@@ -24,8 +24,8 @@
 					<b>💻 Modèle :</b> %XHWModel%<br>
 					<b>🔢 Numéro de série :</b> %XHWSerialNumber%<br>
 					<b>🌐 Adresse IP :</b> %XIPAddress%<br>
-					<b>⚙️ Puce TPM activée ? :</b> %XTPMEnabled%<br>
-					<b>🔒 Secure Boot activé ? :</b> %XSystemSecureBoot%<br>
+					<b>⚙️ Puce TPM :</b> %XTPMEnabled%<br>
+					<b>🔒 Secure Boot :</b> %XSystemSecureBoot%<br>
 				]]>
 			</Action>
 
