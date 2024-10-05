@@ -6,17 +6,17 @@
 	<Actions>
 	
 <!-- SCAN COMPUTER -->
-		<!--<Action Type="DefaultValues"/>-->
+		<Action Type="DefaultValues"/>
 
 <!-- START MAIN THREAD -->
 		<ActionGroup Name="MAIN THREAD">
 
 <!-- USER AUTH -->
-		<!--<Action Type="UserAuth" Title="Authentification" Domain="labloic.local" DomainController="mcm-ad.labloic.local" GetGroups="True" MaxRetryCount="5" DisableCancel="True" Group="Admins du domaine">-->
-			<!--<Field Name="Username" Prompt="Veuillez respecter le schéma suivante" Hint="admin-xxx" RegEx="admin-[A-Za-z0-9]+"/>-->
-			<!--<Field Name="Password" Prompt="Mot de passe" Hint="Mot de passe du compte admin-xxx"/>-->
-			<!--<Field Name="Domain" List="labloic.local" AutoComplete="true"/>-->
-		<!--</Action>-->
+		<Action Type="UserAuth" Title="Authentification" Domain="labloic.local" DomainController="mcm-ad.labloic.local" GetGroups="True" MaxRetryCount="5" DisableCancel="True" Group="Admins du domaine">
+			<Field Name="Username" Prompt="Veuillez respecter le schéma suivante" Hint="admin-xxx" RegEx="admin-[A-Za-z0-9]+"/>
+			<Field Name="Password" Prompt="Mot de passe" Hint="Mot de passe du compte admin-xxx"/>
+			<Field Name="Domain" List="labloic.local" AutoComplete="true"/>
+		</Action>
 
 <!-- STARTUP SCREEN -->
 			<Action Type="Info" Name="StartupScreen" Title="Bienvenue %XAuthenticatedUserDisplayName%" Image="topbanner.png" ShowCancel="False" Timeout="0" TimeoutAction="Continue">
