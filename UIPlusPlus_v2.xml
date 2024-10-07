@@ -60,11 +60,11 @@
 
 <!-- SELECT TOP BRANCH ACTIVE DIRECTORY -->
 			<Action Type="Input" Name="TopBranchAction" Title="Groupe principal" ShowBack="True">
-			  	<InputChoice Variable="TopBranchInputChoice" Question="Sélectionner la catégorie Top Branch" Required="True" Sort="False" DropDownSize="10" Default="SCOPE-DGDSI ➡️ OU-CLOUD">
-					<Choice Option="SCOPE-DGDSI ➡️ OU-CLOUD" Value="TopBranch_SCOPE-DGDSI_OU-CLOUD"/>
-					<Choice Option="SCOPE-DGDSI ➡️ OU-ETU" Value="TopBranch_SCOPE-DGDSI_OU-ETU"/>
-					<Choice Option="SCOPE-DGDSI ➡️ OU-ITINERANT" Value="TopBranch_SCOPE-DGDSI_OU-ITINERANT"/>
-					<Choice Option="SCOPE-DGDSI ➡️ OU-LOCAL" Value="TopBranch_SCOPE-DGDSI_OU-LOCAL"/>
+			  	<InputChoice Variable="TopBranchInputChoice" Question="Sélectionner l'OU principale :'" Required="True" Sort="False" DropDownSize="10" Default="SCOPE-DGDSI → OU-CLOUD">
+					<Choice Option="SCOPE-DGDSI → OU-CLOUD" Value="TopBranch_SCOPE-DGDSI_OU-CLOUD"/>
+					<Choice Option="SCOPE-DGDSI → OU-ETU" Value="TopBranch_SCOPE-DGDSI_OU-ETU"/>
+					<Choice Option="SCOPE-DGDSI → OU-ITINERANT" Value="TopBranch_SCOPE-DGDSI_OU-ITINERANT"/>
+					<Choice Option="SCOPE-DGDSI → OU-LOCAL" Value="TopBranch_SCOPE-DGDSI_OU-LOCAL"/>
 					<Choice Option="ENTITES" Value="TopBranch_ENTITES"/>
 					<Choice Option="LABORATOIRES" Value="TopBranch_LABORATOIRES"/>
 					<Choice Option="UFR" Value="TopBranch_UFR"/>
@@ -73,8 +73,8 @@
 
 <!-- SELECT SUB BRANCH ACTIVE DIRECTORY -->
 				<!-- OPTION SCOPE-DGDSI OU-CLOUD -->
-				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-CLOUD" Title="SubBranchAction_SCOPE-DGDSI_OU-ETU" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-CLOUD"'>
-					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD" Question="Choisir dans quel secteur l'ordinateur sera déployé CLOUD" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
+				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-CLOUD" Title="SubBranchAction_SCOPE-DGDSI_OU-CLOUD" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-CLOUD"'>
+					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD" Question="Sélectionner le secteur (OU-CLOUD) :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
 						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-CLOUD_BELLEDONNE"/>
 						<Choice Option="CHARTREUSE" Value="SCOPE-DGDSI_OU-CLOUD_CHARTREUSE"/>
 						<Choice Option="IMAB" Value="SCOPE-DGDSI_OU-CLOUD_IMAB"/>
@@ -85,7 +85,7 @@
 
 				<!-- OPTION SCOPE-DGDSI OU-ETU -->
 				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-ETU" Title="SubBranchAction_SCOPE-DGDSI_OU-ETU" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-ETU"'>
-					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-ETU" Question="Choisir dans quel secteur l'ordinateur sera déployé ETU" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
+					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-ETU" Question="Sélectionner le secteur (OU-ETU) :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
 						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-ETU_BELLEDONNE"/>
 						<Choice Option="CHARTREUSE" Value="SCOPE-DGDSI_OU-ETU_CHARTREUSE"/>
 						<Choice Option="IMAB" Value="SCOPE-DGDSI_OU-ETU_IMAB"/>
@@ -95,8 +95,8 @@
 				</Action>
 
 				<!-- OPTION SCOPE-DGDSI OU-ITINERANT -->
-				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-ITINERANT" Title="SubBranchAction_SCOPE-DGDSI_OU-ETU" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-ITINERANT"'>
-					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT" Question="Choisir dans quel secteur l'ordinateur sera déployé ITINERANT" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
+				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-ITINERANT" Title="SubBranchAction_SCOPE-DGDSI_OU-ITINERANT" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-ITINERANT"'>
+					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT" Question="Sélectionner le secteur (OU-ITINERANT) :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
 						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-ITINERANT_BELLEDONNE"/>
 						<Choice Option="CHARTREUSE" Value="SCOPE-DGDSI_OU-ITINERANT_CHARTREUSE"/>
 						<Choice Option="IMAB" Value="SCOPE-DGDSI_OU-ITINERANT_IMAB"/>
@@ -106,8 +106,8 @@
 				</Action>
 
 				<!-- OPTION SCOPE-DGDSI OU-LOCAL -->
-				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-LOCAL" Title="SubBranchAction_SCOPE-DGDSI_OU-ETU" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-LOCAL"'>
-					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL" Question="Choisir dans quel secteur l'ordinateur sera déployé LOCAL" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
+				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-LOCAL" Title="SubBranchAction_SCOPE-DGDSI_OU-LOCAL" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-LOCAL"'>
+					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL" Question="Sélectionner le secteur (OU-LOCAL) :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
 						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-LOCAL_BELLEDONNE"/>
 						<Choice Option="CHARTREUSE" Value="SCOPE-DGDSI_OU-LOCAL_CHARTREUSE"/>
 						<Choice Option="IMAB" Value="SCOPE-DGDSI_OU-LOCAL_IMAB"/>
@@ -118,7 +118,7 @@
 
 				<!-- OPTION ENTITES -->
 				<Action Type="Input" Name="SubBranchAction_ENTITES" Title="SubBranchAction_ENTITES" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_ENTITES"'>
-					<InputChoice Variable="SubBranchInputChoice_ENTITES" Question="Choisir dans quel secteur l'ordinateur sera déployé ENTITES" Required="True" Sort="False" DropDownSize="10" Default="GRENOBLE-INP">
+					<InputChoice Variable="SubBranchInputChoice_ENTITES" Question="Sélectionner le secteur (ENTITES) :" Required="True" Sort="False" DropDownSize="10" Default="GRENOBLE-INP">
 						<Choice Option="GRENOBLE-INP" Value="ENTITES_GRENOBLE-INP"/>
 						<Choice Option="IEP" Value="ENTITES_IEP"/>
 					</InputChoice>
@@ -126,7 +126,7 @@
 
 				<!-- OPTION LABORATOIRES -->
 				<Action Type="Input" Name="SubBranchAction_LABORATOIRES" Title="SubBranchAction_LABORATOIRES" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_LABORATOIRES"'>
-					<InputChoice Variable="SubBranchInputChoice_LABORATOIRES" Question="Choisir dans quel secteur l'ordinateur sera déployé LABORATOIRES" Required="True" Sort="False" DropDownSize="10" Default="DCM">
+					<InputChoice Variable="SubBranchInputChoice_LABORATOIRES" Question="Sélectionner le secteur (LABORATOIRES) :" Required="True" Sort="False" DropDownSize="10" Default="DCM">
 						<Choice Option="DCM" Value="LABORATOIRES_DCM"/>
 						<Choice Option="IGE" Value="LABORATOIRES_IGE"/>
 						<Choice Option="IPAG" Value="LABORATOIRES_IPAG"/>
@@ -143,7 +143,7 @@
 
 				<!-- OPTION UFR -->
 				<Action Type="Input" Name="SubBranchAction_UFR" Title="SubBranchAction_UFR" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_UFR"'>
-					<InputChoice Variable="SubBranchInputChoice_UFR" Question="Secteur l'ordinateur sera déployé UFR" Required="True" Sort="False" DropDownSize="10" Default="IUGA">
+					<InputChoice Variable="SubBranchInputChoice_UFR" Question="Sélectionner le secteur (UFR) :" Required="True" Sort="False" DropDownSize="10" Default="IUGA">
 						<Choice Option="IUGA" Value="UFR_IUGA"/>
 						<Choice Option="PHITEM" Value="UFR_PHITEM"/>
 						<Choice Option="SANTE" Value="UFR_SANTE"/>
@@ -237,7 +237,7 @@
 			<Action Type="Info" Name="SummaryWindow" Title="Résumé" ShowBack="True">
 				<![CDATA[Résumé de déploiement : <br><hr>
 					<b>💻 Nom de l'ordinateur :</b> %OSDComputerName%<br>
-					<b>🗃️ Nom de l'OU :</b> %OSDDomainOUName%<br>
+					<b>🗃️ Nom de l'OU :</b> %TopBranchInputChoice%<br>
 					<b>🔤 Langue de l'interface utilisateur :</b> %UILanguage%<br>
 					<b>⌨️ Disposition du clavier :</b> %KeyboardLayout%<br>
 					<b>🌐 Adresse IP :</b> %XIPAddress%<br>
