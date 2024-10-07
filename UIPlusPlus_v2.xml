@@ -143,7 +143,7 @@
 
 				<!-- OPTION UFR -->
 				<Action Type="Input" Name="SubBranchAction_UFR" Title="SubBranchAction_UFR" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_UFR"'>
-					<InputChoice Variable="SubBranchInputChoice_UFR" Question="Choisir dans quel secteur l'ordinateur sera déployé UFR" Required="True" Sort="False" DropDownSize="10" Default="IUGA">
+					<InputChoice Variable="SubBranchInputChoice_UFR" Question="Secteur l'ordinateur sera déployé UFR" Required="True" Sort="False" DropDownSize="10" Default="IUGA">
 						<Choice Option="IUGA" Value="UFR_IUGA"/>
 						<Choice Option="PHITEM" Value="UFR_PHITEM"/>
 						<Choice Option="SANTE" Value="UFR_SANTE"/>
