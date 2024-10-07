@@ -10,7 +10,7 @@
 
 <!-- START MAIN THREAD -->
 		<ActionGroup Name="MAIN THREAD">
-		<Action Type="ExternalCall" Title="Get PC Name from IPAM">PowerShell.exe -ExecutionPolicy ByPass -File .\GetPCName.ps1</Action>
+		<Action Type="ExternalCall" Title="Obtention du nom de l'ordinateur depuis IPAM...">PowerShell.exe -ExecutionPolicy ByPass -File .\GetPCName.ps1</Action>
 
 <!-- USER AUTH -->
 		<Action Type="UserAuth" Title="Authentification" Domain="labloic.local" DomainController="mcm-ad.labloic.local" GetGroups="True" MaxRetryCount="5" DisableCancel="True" Group="Admins du domaine">
@@ -74,7 +74,7 @@
 <!-- SELECT SUB BRANCH ACTIVE DIRECTORY -->
 				<!-- OPTION SCOPE-DGDSI OU-CLOUD -->
 				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-CLOUD" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-CLOUD"'>
-					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD" Question="Sélectionner le secteur (SCOPE-DGDSI → OU-CLOUD) :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
+					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD" Question="[OU-CLOUD] Sélectionner le secteur :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
 						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-CLOUD_BELLEDONNE"/>
 						<Choice Option="CHARTREUSE" Value="SCOPE-DGDSI_OU-CLOUD_CHARTREUSE"/>
 						<Choice Option="IMAB" Value="SCOPE-DGDSI_OU-CLOUD_IMAB"/>
@@ -85,7 +85,7 @@
 
 				<!-- OPTION SCOPE-DGDSI OU-ETU -->
 				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-ETU" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-ETU"'>
-					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-ETU" Question="Sélectionner le secteur (SCOPE-DGDSI → OU-ETU) :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
+					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-ETU" Question="[OU-ETU] Sélectionner le secteur :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
 						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-ETU_BELLEDONNE"/>
 						<Choice Option="CHARTREUSE" Value="SCOPE-DGDSI_OU-ETU_CHARTREUSE"/>
 						<Choice Option="IMAB" Value="SCOPE-DGDSI_OU-ETU_IMAB"/>
@@ -96,7 +96,7 @@
 
 				<!-- OPTION SCOPE-DGDSI OU-ITINERANT -->
 				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-ITINERANT" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-ITINERANT"'>
-					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT" Question="Sélectionner le secteur (SCOPE-DGDSI → OU-ITINERANT) :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
+					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT" Question="[OU-ITINERANT] Sélectionner le secteur :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
 						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-ITINERANT_BELLEDONNE"/>
 						<Choice Option="CHARTREUSE" Value="SCOPE-DGDSI_OU-ITINERANT_CHARTREUSE"/>
 						<Choice Option="IMAB" Value="SCOPE-DGDSI_OU-ITINERANT_IMAB"/>
@@ -107,7 +107,7 @@
 
 				<!-- OPTION SCOPE-DGDSI OU-LOCAL -->
 				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-LOCAL" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-LOCAL"'>
-					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL" Question="Sélectionner le secteur (SCOPE-DGDSI → OU-LOCAL) :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
+					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL" Question="[OU-LOCAL] Sélectionner le secteur :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
 						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-LOCAL_BELLEDONNE"/>
 						<Choice Option="CHARTREUSE" Value="SCOPE-DGDSI_OU-LOCAL_CHARTREUSE"/>
 						<Choice Option="IMAB" Value="SCOPE-DGDSI_OU-LOCAL_IMAB"/>
@@ -118,7 +118,7 @@
 
 				<!-- OPTION ENTITES -->
 				<Action Type="Input" Name="SubBranchAction_ENTITES" Title="SubBranchAction_ENTITES" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_ENTITES"'>
-					<InputChoice Variable="SubBranchInputChoice_ENTITES" Question="Sélectionner le secteur (ENTITES) :" Required="True" Sort="False" DropDownSize="10" Default="GRENOBLE-INP">
+					<InputChoice Variable="SubBranchInputChoice_ENTITES" Question="Sélectionner l'entité :" Required="True" Sort="False" DropDownSize="10" Default="GRENOBLE-INP">
 						<Choice Option="GRENOBLE-INP" Value="ENTITES_GRENOBLE-INP"/>
 						<Choice Option="IEP" Value="ENTITES_IEP"/>
 					</InputChoice>
@@ -126,7 +126,7 @@
 
 				<!-- OPTION LABORATOIRES -->
 				<Action Type="Input" Name="SubBranchAction_LABORATOIRES" Title="SubBranchAction_LABORATOIRES" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_LABORATOIRES"'>
-					<InputChoice Variable="SubBranchInputChoice_LABORATOIRES" Question="Sélectionner le secteur (LABORATOIRES) :" Required="True" Sort="False" DropDownSize="10" Default="DCM">
+					<InputChoice Variable="SubBranchInputChoice_LABORATOIRES" Question="Sélectionner le laboratoire :" Required="True" Sort="False" DropDownSize="10" Default="DCM">
 						<Choice Option="DCM" Value="LABORATOIRES_DCM"/>
 						<Choice Option="IGE" Value="LABORATOIRES_IGE"/>
 						<Choice Option="IPAG" Value="LABORATOIRES_IPAG"/>
@@ -143,7 +143,7 @@
 
 				<!-- OPTION UFR -->
 				<Action Type="Input" Name="SubBranchAction_UFR" Title="SubBranchAction_UFR" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_UFR"'>
-					<InputChoice Variable="SubBranchInputChoice_UFR" Question="Sélectionner le secteur (UFR) :" Required="True" Sort="False" DropDownSize="10" Default="IUGA">
+					<InputChoice Variable="SubBranchInputChoice_UFR" Question="Sélectionner l'UFR :" Required="True" Sort="False" DropDownSize="10" Default="IUGA">
 						<Choice Option="IUGA" Value="UFR_IUGA"/>
 						<Choice Option="PHITEM" Value="UFR_PHITEM"/>
 						<Choice Option="SANTE" Value="UFR_SANTE"/>
