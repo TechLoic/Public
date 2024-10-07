@@ -29,13 +29,9 @@
 				]]>
 			</Action>
 
-<!-- CHOICE VARIABLES DECLARATIONS -->
+<!-- CHOICES VARIABLES DECLARATIONS -->
 			<Action Type="TSVar" Variable="LangList">"English US"</Action>
 			<Action Type="TSVar" Variable="LangCodes">"en-US"</Action>
-			
-			<Action Type="TSVar" Variable="SiteList">"LON - London,NYC - New York,PAR - Paris,TKY - Tokyo"</Action>
-			<Action Type="TSVar" Variable="SiteCodes">"LON,NYC,PAR,TKY"</Action>
-			
 			<Action Type="TSVar" Variable="KeybList">"English US"</Action>
 			<Action Type="TSVar" Variable="KeybCodes">"en-US"</Action>
 
@@ -56,6 +52,9 @@
 <!-- VARIABLES TASK SEQUENCE -->
 			<Action Type="TSVar" Name="SMSTSPreferredAdvertID" Condition='"%SelectTSInputChoice%" = "TS_Windows-11"'>"LL12000F"'</Action>
 			<Action Type="TSVar" Name="SMSTSPreferredAdvertID" Condition='"%SelectTSInputChoice%" = "TS_Windows-11-TEST"'>"LL120012"'</Action>
+
+<!-- VARIABLES LANGUAGE FR -->
+			<Action Type="TSVar" Name="KeyboardLayout" Condition='"%ChangeDefaults%" = "False"'>"Français"'</Action>
 
 <!-- SELECT TOP BRANCH ACTIVE DIRECTORY -->
 			<Action Type="Input" Name="TopBranchAction" Title="Groupe principal" ShowBack="True">
@@ -174,27 +173,27 @@
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_VERCORS"'>"LDAP://OU=VERCORS,OU=OU-LOCAL,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
 
 	<!-- VARIABLES ACTIVE DIRECTORY OU ENTITES -->
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
 
 	<!-- VARIABLES ACTIVE DIRECTORY OU LABORATOIRES -->
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
 
 	<!-- VARIABLES ACTIVE DIRECTORY OU UFR -->
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
 
 <!-- SELECT SITE -->
 			<!--<Action Type="Input" Name="SelectSite" Title="Configuration du déploiement" Timeout="0" ShowBack="True">
@@ -202,58 +201,6 @@
 					<ChoiceList OptionList="%SiteList%" AlternateValueList="%SiteCodes%"/>
 				</InputChoice>
 			</Action>-->
-			
-<!-- SETTING KEYBOARD / LOCALE / TIMEZONE DEFAULTS FOR SITES WITH REGEX MATCHING -->
-		<Action Type="Switch" OnValue='%OSDSite%' DontEval="False">
-	
-				<!-- London -->
-				<Case RegEx="SPO">
-					<Variable Name="UILanguage">"English UK"</Variable>
-					<Variable Name="KeyboardLayout">"English UK"</Variable>
-					<Variable Name="OSDDomainName">"europe.mycompany.bla"</Variable>
-					<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-					<Variable Name="OSDWindowsSettingsUILanguage">"en-GB"</Variable>
-					<Variable Name="OSDWindowsSettingsInputLocale">"en-GB"</Variable>
-					<Variable Name="OSDWindowsSettingsUserLocale">"en-GB"</Variable>
-					<Variable Name="OSDTimeZone">"GMT Standard Time"</Variable>
-				</Case>
-				
-				<!-- Paris -->
-				<Case RegEx="ROU">
-					<Variable Name="UILanguage">"French"</Variable>
-					<Variable Name="KeyboardLayout">"French"</Variable>
-					<Variable Name="OSDDomainName">"europe.mycompany.bla"</Variable>
-					<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-					<Variable Name="OSDWindowsSettingsUILanguage">"fr-FR"</Variable>
-					<Variable Name="OSDWindowsSettingsInputLocale">"fr-FR"</Variable>
-					<Variable Name="OSDWindowsSettingsUserLocale">"fr-FR"</Variable>
-					<Variable Name="OSDTimeZone">"Romance Standard Time"</Variable>
-				</Case>
-
-				<!-- Tokyo -->
-				<Case RegEx="TKO">
-					<Variable Name="UILanguage">"Japanese"</Variable>
-					<Variable Name="KeyboardLayout">"Japanese"</Variable>
-					<Variable Name="OSDDomainName">"americas.mycompany.bla"</Variable>
-					<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-					<Variable Name="OSDWindowsSettingsUILanguage">"jp-JP"</Variable>
-					<Variable Name="OSDWindowsSettingsInputLocale">"jp-JP"</Variable>
-					<Variable Name="OSDWindowsSettingsUserLocale">"jp-JP"</Variable>
-					<Variable Name="OSDTimeZone">"Tokyo Standard Time"</Variable>
-				</Case>
-
-				<!-- New York -->
-				<Case RegEx="NYC">
-					<Variable Name="UILanguage">"English US"</Variable>
-					<Variable Name="KeyboardLayout">"English US"</Variable>
-					<Variable Name="OSDDomainName">"americas.mycompany.bla"</Variable>
-					<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-					<Variable Name="OSDWindowsSettingsUILanguage">"en-US"</Variable>
-					<Variable Name="OSDWindowsSettingsInputLocale">"en-US"</Variable>
-					<Variable Name="OSDWindowsSettingsUserLocale">"en-US"</Variable>
-					<Variable Name="OSDTimeZone">"Central Standard Time"</Variable>
-				</Case>
-			</Action>
 
 <!-- CHANGE DEFAULT LOCALIZATION SETTINGS -->
 			<ActionGroup Name="Customization" Condition='"%ChangeDefaults%" = "True"'>
@@ -271,101 +218,13 @@
 				</Action>
 
 				<Action Type="Switch" OnValue='%KeyboardLayout%' DontEval="True">
-					<Case RegEx="Belgian">
-						<Variable Name="OSDWindowsSettingsInputLocale">"nl-BE"</Variable>
-						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-						<Variable Name="OSDWindowsSettingsUserLocale">"nl-BE"</Variable>
-					</Case>
-					<Case RegEx="Chinese Simplified">
-						<Variable Name="OSDWindowsSettingsInputLocale">"zh-CN"</Variable>
-						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-						<Variable Name="OSDWindowsSettingsUserLocale">"zh-CN"</Variable>
-					</Case>
-					<Case RegEx="Dutch">
-						<Variable Name="OSDWindowsSettingsInputLocale">"nl-NL"</Variable>
-						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-						<Variable Name="OSDWindowsSettingsUserLocale">"nl-NL"</Variable>
-					</Case>				
-					<Case RegEx="English India">
-						<Variable Name="OSDWindowsSettingsInputLocale">"en-IN"</Variable>
-						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-						<Variable Name="OSDWindowsSettingsUserLocale">"en-IN"</Variable>
-					</Case>	
-					<Case RegEx="English Singapore">
-						<Variable Name="OSDWindowsSettingsInputLocale">"en-SG"</Variable>
-						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-						<Variable Name="OSDWindowsSettingsUserLocale">"en-SG"</Variable>
-					</Case>
-					<Case RegEx="English UK">
-						<Variable Name="OSDWindowsSettingsInputLocale">"en-GB"</Variable>
-						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-						<Variable Name="OSDWindowsSettingsUserLocale">"en-GB"</Variable>
-					</Case>
 					<Case RegEx="English US">
+						<Variable Name="UILanguage">"English US"</Variable>
+						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
+						<Variable Name="OSDWindowsSettingsUILanguage">"en-US"</Variable>
 						<Variable Name="OSDWindowsSettingsInputLocale">"en-US"</Variable>
-						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
 						<Variable Name="OSDWindowsSettingsUserLocale">"en-US"</Variable>
-					</Case>
-					<Case RegEx="French">
-						<Variable Name="OSDWindowsSettingsInputLocale">"fr-FR"</Variable>
-						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-						<Variable Name="OSDWindowsSettingsUserLocale">"fr-FR"</Variable>
-					</Case>
-					<Case RegEx="French Canadian">
-						<Variable Name="OSDWindowsSettingsInputLocale">"fr-CA"</Variable>
-						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-						<Variable Name="OSDWindowsSettingsUserLocale">"fr-CA"</Variable>
-					</Case>
-					<Case RegEx="German">
-						<Variable Name="OSDWindowsSettingsInputLocale">"de-DE"</Variable>
-						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-						<Variable Name="OSDWindowsSettingsUserLocale">"de-DE"</Variable>
-					</Case>
-					<Case RegEx="German Swiss">
-						<Variable Name="OSDWindowsSettingsInputLocale">"de-CH"</Variable>
-						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-						<Variable Name="OSDWindowsSettingsUserLocale">"de-CH"</Variable>
-					</Case>
-					<Case RegEx="Hungarian">
-						<Variable Name="OSDWindowsSettingsInputLocale">"hu-HU"</Variable>
-						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-						<Variable Name="OSDWindowsSettingsUserLocale">"hu-HU"</Variable>
-					</Case>
-					<Case RegEx="Italian">
-						<Variable Name="OSDWindowsSettingsInputLocale">"it-IT"</Variable>
-						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-						<Variable Name="OSDWindowsSettingsUserLocale">"it-IT"</Variable>
-					</Case>
-					<Case RegEx="Japanese">
-						<Variable Name="OSDWindowsSettingsInputLocale">"ja-JP"</Variable>
-						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-						<Variable Name="OSDWindowsSettingsUserLocale">"ja-JP"</Variable>
-					</Case>
-					<Case RegEx="Korean">
-						<Variable Name="OSDWindowsSettingsInputLocale">"ko-KR"</Variable>
-						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-						<Variable Name="OSDWindowsSettingsUserLocale">"ko-KR"</Variable>
-					</Case>
-					<Case RegEx="Portuguese Brazilian">
-						<Variable Name="OSDWindowsSettingsInputLocale">"pt-BR"</Variable>
-						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-						<Variable Name="OSDWindowsSettingsUserLocale">"pt-BR"</Variable>
-					</Case>
-					<Case RegEx="Spanish">
-						<Variable Name="OSDWindowsSettingsInputLocale">"es-ES"</Variable>
-						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-						<Variable Name="OSDWindowsSettingsUserLocale">"es-ES"</Variable>
-					</Case>
-					<Case RegEx="Spanish Mexican">
-						<Variable Name="OSDWindowsSettingsInputLocale">"es-MX"</Variable>
-						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-						<Variable Name="OSDWindowsSettingsUserLocale">"es-MX"</Variable>
-					</Case>
-					<Case RegEx="Swedish">
-						<Variable Name="OSDWindowsSettingsInputLocale">"sv-SE"</Variable>
-						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
-						<Variable Name="OSDWindowsSettingsUserLocale">"sv-SE"</Variable>
-					</Case>
+						</Case>
 				</Action>
 			</ActionGroup>
 
@@ -375,10 +234,10 @@
 <!-- SUMMARY WINDOW -->
 			<Action Type="Info" Name="SummaryWindow" Title="Résumé" ShowBack="True">
 				<![CDATA[Values based on previous selections: <br><hr>
-					<b>Nom de l'ordinateur :</b>  %OSDComputerName%<br>
-					<b>Domain Name :</b>  %OSDDomainName%<br>
-					<b>Windows Language :</b>  %UILanguage%<br>
-					<b>Disposition de clavier :</b>  %KeyboardLayout%<br>
+					<b>Nom de l'ordinateur :</b> %OSDComputerName%<br>
+					<b>Domain Name :</b> %OSDDomainName%<br>
+					<b>Windows Language :</b> %UILanguage%<br>
+					<b>Disposition de clavier :</b> %KeyboardLayout%<br>
 					<b>Adresse IP :</b> %XIPAddress%<br>
 				]]>
 			</Action>
