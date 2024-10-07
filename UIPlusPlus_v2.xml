@@ -236,11 +236,10 @@
 <!-- SUMMARY WINDOW -->
 			<Action Type="Info" Name="SummaryWindow" Title="Résumé" ShowBack="True">
 				<![CDATA[Values based on previous selections: <br><hr>
-					<b>Nom de l'ordinateur :</b> %OSDComputerName%<br>
-					<b>Domain Name :</b> %OSDDomainName%<br>
-					<b>Windows Language :</b> %UILanguage%<br>
-					<b>Disposition de clavier :</b> %KeyboardLayout%<br>
-					<b>Adresse IP :</b> %XIPAddress%<br>
+					<b>💻 Nom de l'ordinateur :</b> %OSDComputerName%<br>
+					<b>🔤 Langue de l'interface utilisateur :</b> %UILanguage%<br>
+					<b>⌨️ Disposition du clavier :</b> %KeyboardLayout%<br>
+					<b>🌐 Adresse IP :</b> %XIPAddress%<br>
 				]]>
 			</Action>
 		</ActionGroup>
