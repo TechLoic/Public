@@ -55,6 +55,7 @@
 
 <!-- VARIABLES LANGUAGE FR -->
 			<Action Type="TSVar" Name="KeyboardLayout" Condition='"%ChangeDefaults%" = "False"'>"Français"'</Action>
+			<Action Type="TSVar" Name="UILanguage" Condition='"%ChangeDefaults%" = "False"'>"Français"'</Action>
 
 <!-- SELECT TOP BRANCH ACTIVE DIRECTORY -->
 			<Action Type="Input" Name="TopBranchAction" Title="Groupe principal" ShowBack="True">
