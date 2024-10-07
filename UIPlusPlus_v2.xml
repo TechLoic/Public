@@ -38,7 +38,7 @@
 
 <!-- SELECT COMPUTER NAME / TASK SEQUENCE / LANGUAGE OPTION -->
 			<Action Type="Input" Name="SelectComputerNameTSAction" Title="Select TS" ShowBack="True">
-				<TextInput Prompt="Nom de l'ordinateur" Hint="Entrer le nom de l'ordinateur" RegEx="[^\&quot;/\\\[\]:;\|=,\+\*\?&gt;&lt;]{3,15}" Variable="ZZComputerName" Question="Nom de l'ordinateur" Default="%_SMSTSMachineName%"/>
+				<TextInput Prompt="Nom de l'ordinateur" Hint="Entrer le nom de l'ordinateur" RegEx="[^\&quot;/\\\[\]:;\|=,\+\*\?&gt;&lt;]{3,15}" Variable="ZZComputerName" Question="Nom de l'ordinateur" Default="%OSDComputerName%"/>
 			  	<InputChoice Variable="SelectTSInputChoice" Question="Select TS CHOICE" Required="True" Sort="False" DropDownSize="10" Default="SCOPE-DGDSI ➡️ OU-CLOUD">
 					<Choice Option="Windows 11" Value="TS_Windows-11"/>
 					<Choice Option="Windows 11 - TEST" Value="TS_Windows-11-TEST"/>
@@ -235,8 +235,9 @@
 
 <!-- SUMMARY WINDOW -->
 			<Action Type="Info" Name="SummaryWindow" Title="Résumé" ShowBack="True">
-				<![CDATA[Values based on previous selections: <br><hr>
+				<![CDATA[Résumé de déploiement : <br><hr>
 					<b>💻 Nom de l'ordinateur :</b> %OSDComputerName%<br>
+					<b>🗃️ Nom de l'OU :</b> %OSDDomainOUName%<br>
 					<b>🔤 Langue de l'interface utilisateur :</b> %UILanguage%<br>
 					<b>⌨️ Disposition du clavier :</b> %KeyboardLayout%<br>
 					<b>🌐 Adresse IP :</b> %XIPAddress%<br>
