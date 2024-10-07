@@ -196,13 +196,6 @@
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
 
-<!-- SELECT SITE -->
-			<!--<Action Type="Input" Name="SelectSite" Title="Configuration du déploiement" Timeout="0" ShowBack="True">
-				<InputChoice Variable="SelectedSite" AlternateVariable="OSDSite" Question="Select the site:" Required="True">
-					<ChoiceList OptionList="%SiteList%" AlternateValueList="%SiteCodes%"/>
-				</InputChoice>
-			</Action>-->
-
 <!-- CHANGE DEFAULT LOCALIZATION SETTINGS -->
 			<ActionGroup Name="Customization" Condition='"%ChangeDefaults%" = "True"'>
 				
