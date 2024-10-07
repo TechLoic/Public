@@ -14,7 +14,7 @@
 
 <!-- USER AUTH -->
 		<Action Type="UserAuth" Title="Authentification" Domain="labloic.local" DomainController="mcm-ad.labloic.local" GetGroups="True" MaxRetryCount="5" DisableCancel="True" Group="Admins du domaine">
-			<Field Name="Username" Prompt="Veuillez respecter le schéma suivante" Hint="admin-xxx" RegEx="admin-[A-Za-z0-9]+"/>
+			<Field Name="Username" Question="PLOP" Prompt="Veuillez respecter le schéma suivant" Hint="admin-xxx" RegEx="admin-[A-Za-z0-9]+"/>
 			<Field Name="Password" Prompt="Mot de passe" Hint="Mot de passe du compte admin-xxx"/>
 			<Field Name="Domain" List="labloic.local" AutoComplete="true"/>
 		</Action>
@@ -38,7 +38,7 @@
 
 <!-- SELECT COMPUTER NAME / TASK SEQUENCE / LANGUAGE OPTION -->
 			<Action Type="Input" Name="SelectComputerNameTSAction" Title="Configuration du poste" ShowBack="True">
-				<TextInput Prompt="Nom de l'ordinateur :" Hint="Entrer le nom de l'ordinateur" RegEx="[^\&quot;/\\\[\]:;\|=,\+\*\?&gt;&lt;]{3,15}" Variable="ZZComputerName" Question="Nom de l'ordinateur" Default="%OSDComputerName%"/>
+				<TextInput Prompt="Nom de l'ordinateur" Hint="Entrer le nom de l'ordinateur" RegEx="[^\&quot;/\\\[\]:;\|=,\+\*\?&gt;&lt;]{3,15}" Variable="ZZComputerName" Question="Nom de l'ordinateur :" Default="%OSDComputerName%"/>
 			  	<InputChoice Variable="SelectTSInputChoice" Question="Sélectionner la séquence de tâche :" Required="True" Sort="False" DropDownSize="10" Default="Windows 11">
 					<Choice Option="Windows 11" Value="TS_Windows-11"/>
 					<Choice Option="Windows 11 - TEST" Value="TS_Windows-11-TEST"/>
@@ -60,7 +60,7 @@
 
 <!-- SELECT TOP BRANCH ACTIVE DIRECTORY -->
 			<Action Type="Input" Name="TopBranchAction" Title="Emplacement dans l'Active Directory" ShowBack="True">
-			  	<InputChoice Variable="TopBranchInputChoice" Question="Sélectionner l'OU principale :'" Required="True" Sort="False" DropDownSize="10" Default="SCOPE-DGDSI → OU-CLOUD">
+			  	<InputChoice Variable="TopBranchInputChoice" Question="Sélectionner l'OU principale :" Required="True" Sort="False" DropDownSize="10" Default="SCOPE-DGDSI → OU-CLOUD">
 					<Choice Option="SCOPE-DGDSI → OU-CLOUD" Value="TopBranch_SCOPE-DGDSI_OU-CLOUD"/>
 					<Choice Option="SCOPE-DGDSI → OU-ETU" Value="TopBranch_SCOPE-DGDSI_OU-ETU"/>
 					<Choice Option="SCOPE-DGDSI → OU-ITINERANT" Value="TopBranch_SCOPE-DGDSI_OU-ITINERANT"/>
@@ -74,7 +74,7 @@
 <!-- SELECT SUB BRANCH ACTIVE DIRECTORY -->
 				<!-- OPTION SCOPE-DGDSI OU-CLOUD -->
 				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-CLOUD" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-CLOUD"'>
-					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD" Question="Sélectionner le secteur (OU-CLOUD) :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
+					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD" Question="Sélectionner le secteur (SCOPE-DGDSI → OU-CLOUD) :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
 						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-CLOUD_BELLEDONNE"/>
 						<Choice Option="CHARTREUSE" Value="SCOPE-DGDSI_OU-CLOUD_CHARTREUSE"/>
 						<Choice Option="IMAB" Value="SCOPE-DGDSI_OU-CLOUD_IMAB"/>
@@ -84,8 +84,8 @@
 				</Action>
 
 				<!-- OPTION SCOPE-DGDSI OU-ETU -->
-				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-ETU" Title="SubBranchAction_SCOPE-DGDSI_OU-ETU" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-ETU"'>
-					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-ETU" Question="Sélectionner le secteur (OU-ETU) :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
+				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-ETU" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-ETU"'>
+					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-ETU" Question="Sélectionner le secteur (SCOPE-DGDSI → OU-ETU) :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
 						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-ETU_BELLEDONNE"/>
 						<Choice Option="CHARTREUSE" Value="SCOPE-DGDSI_OU-ETU_CHARTREUSE"/>
 						<Choice Option="IMAB" Value="SCOPE-DGDSI_OU-ETU_IMAB"/>
@@ -95,8 +95,8 @@
 				</Action>
 
 				<!-- OPTION SCOPE-DGDSI OU-ITINERANT -->
-				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-ITINERANT" Title="SubBranchAction_SCOPE-DGDSI_OU-ITINERANT" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-ITINERANT"'>
-					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT" Question="Sélectionner le secteur (OU-ITINERANT) :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
+				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-ITINERANT" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-ITINERANT"'>
+					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT" Question="Sélectionner le secteur (SCOPE-DGDSI → OU-ITINERANT) :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
 						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-ITINERANT_BELLEDONNE"/>
 						<Choice Option="CHARTREUSE" Value="SCOPE-DGDSI_OU-ITINERANT_CHARTREUSE"/>
 						<Choice Option="IMAB" Value="SCOPE-DGDSI_OU-ITINERANT_IMAB"/>
@@ -106,8 +106,8 @@
 				</Action>
 
 				<!-- OPTION SCOPE-DGDSI OU-LOCAL -->
-				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-LOCAL" Title="SubBranchAction_SCOPE-DGDSI_OU-LOCAL" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-LOCAL"'>
-					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL" Question="Sélectionner le secteur (OU-LOCAL) :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
+				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-LOCAL" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-LOCAL"'>
+					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL" Question="Sélectionner le secteur (SCOPE-DGDSI → OU-LOCAL) :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
 						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-LOCAL_BELLEDONNE"/>
 						<Choice Option="CHARTREUSE" Value="SCOPE-DGDSI_OU-LOCAL_CHARTREUSE"/>
 						<Choice Option="IMAB" Value="SCOPE-DGDSI_OU-LOCAL_IMAB"/>
@@ -234,7 +234,7 @@
 			<Action Type="TSVar" Name="OSDWindowsSettingsUILanguageFallback">"fr-FR"</Action> 	
 
 <!-- SUMMARY WINDOW -->
-			<Action Type="Info" Name="SummaryWindow" Title="Résumé" ShowBack="True">
+			<Action Type="Info" Name="SummaryWindow" Title="Finalisation" ShowBack="True">
 				<![CDATA[Résumé de déploiement : <br><hr>
 					<b>💻 Nom de l'ordinateur :</b> %OSDComputerName%<br>
 					<b>🗃️ Nom de l'OU :</b> %TopBranchInputChoice%<br>
