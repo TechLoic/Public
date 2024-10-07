@@ -37,7 +37,7 @@
 			<Action Type="TSVar" Variable="KeybCodes">"fr-FR,en-US"</Action>
 
 <!-- SELECT COMPUTER NAME / TASK SEQUENCE / LANGUAGE OPTION -->
-			<Action Type="Input" Name="SelectComputerNameTSAction" Title="Select TS" ShowBack="True">
+			<Action Type="Input" Name="SelectComputerNameTSAction" Title="Configuration du poste" ShowBack="True">
 				<TextInput Prompt="Nom de l'ordinateur :" Hint="Entrer le nom de l'ordinateur" RegEx="[^\&quot;/\\\[\]:;\|=,\+\*\?&gt;&lt;]{3,15}" Variable="ZZComputerName" Question="Nom de l'ordinateur" Default="%OSDComputerName%"/>
 			  	<InputChoice Variable="SelectTSInputChoice" Question="Sélectionner la séquence de tâche :" Required="True" Sort="False" DropDownSize="10" Default="Windows 11">
 					<Choice Option="Windows 11" Value="TS_Windows-11"/>
@@ -59,7 +59,7 @@
 			<Action Type="TSVar" Name="UILanguage" Condition='"%ChangeDefaults%" = "False"'>"Français"'</Action>
 
 <!-- SELECT TOP BRANCH ACTIVE DIRECTORY -->
-			<Action Type="Input" Name="TopBranchAction" Title="Groupe principal" ShowBack="True">
+			<Action Type="Input" Name="TopBranchAction" Title="Emplacement dans l'Active Directory" ShowBack="True">
 			  	<InputChoice Variable="TopBranchInputChoice" Question="Sélectionner l'OU principale :'" Required="True" Sort="False" DropDownSize="10" Default="SCOPE-DGDSI → OU-CLOUD">
 					<Choice Option="SCOPE-DGDSI → OU-CLOUD" Value="TopBranch_SCOPE-DGDSI_OU-CLOUD"/>
 					<Choice Option="SCOPE-DGDSI → OU-ETU" Value="TopBranch_SCOPE-DGDSI_OU-ETU"/>
@@ -73,7 +73,7 @@
 
 <!-- SELECT SUB BRANCH ACTIVE DIRECTORY -->
 				<!-- OPTION SCOPE-DGDSI OU-CLOUD -->
-				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-CLOUD" Title="SubBranchAction_SCOPE-DGDSI_OU-CLOUD" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-CLOUD"'>
+				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-CLOUD" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-CLOUD"'>
 					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD" Question="Sélectionner le secteur (OU-CLOUD) :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
 						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-CLOUD_BELLEDONNE"/>
 						<Choice Option="CHARTREUSE" Value="SCOPE-DGDSI_OU-CLOUD_CHARTREUSE"/>
