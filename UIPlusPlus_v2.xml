@@ -10,7 +10,7 @@
 
 <!-- START MAIN THREAD -->
 		<ActionGroup Name="MAIN THREAD">
-		<Action Type="ExternalCall" Title="Getting computer name from IPAM ...">PowerShell.exe -ExecutionPolicy ByPass -File .\GetPCName.ps1</Action>
+		<Action Type="ExternalCall" Title="Getting the computer's name from IPAM ...">PowerShell.exe -ExecutionPolicy ByPass -File .\GetPCName.ps1</Action>
 
 <!-- USER AUTH -->
 		<Action Type="UserAuth" Title="Authentification" Domain="labloic.local" DomainController="mcm-ad.labloic.local" GetGroups="True" MaxRetryCount="5" DisableCancel="True" Group="Admins du domaine">
