@@ -30,14 +30,14 @@
 			</Action>
 
 <!-- CHOICE VARIABLES DECLARATIONS -->
-			<Action Type="TSVar" Variable="LangList">"English US"</Action>
-			<Action Type="TSVar" Variable="LangCodes">"en-US"</Action>
+			<Action Type="TSVar" Variable="LangList">"Czech,Chinese Simplified,Dutch,English UK,English US,French,French Canadian,German,Italian,Japanese,Korean,Spanish,Spanish Mexican,Swedish"</Action>
+			<Action Type="TSVar" Variable="LangCodes">"cs-CZ,zh-CN,nl-NL,en-GB,en-US,fr-FR,fr-CA,de-DE,it-IT,ja-JP,ko-KR,es-ES,es-MX,sv-SE"</Action>
 			
 			<Action Type="TSVar" Variable="SiteList">"LON - London,NYC - New York,PAR - Paris,TKY - Tokyo"</Action>
 			<Action Type="TSVar" Variable="SiteCodes">"LON,NYC,PAR,TKY"</Action>
 			
-			<Action Type="TSVar" Variable="KeybList">"English US"</Action>
-			<Action Type="TSVar" Variable="KeybCodes">"en-US"</Action>
+			<Action Type="TSVar" Variable="KeybList">"Belgian,Chinese Simplified,Dutch,English India,English Singapore,English UK,English US,French,French Canadian,German,German Swiss,Hungarian,Italian,Japanese,Korean,Portuguese Brazilian,Spanish,Spanish Mexican,Swedish"</Action>
+			<Action Type="TSVar" Variable="KeybCodes">"nl-BE,zh-CN,nl-NL,en-IN,en-SG,en-GB,en-US,fr-FR,fr-CA,de-DE,de-CH,hu-HU,it-IT,ja-JP,ko-KR,pt-BR,es-ES,es-MX,sv-SE"</Action>
 
 <!-- SELECT COMPUTER NAME / TASK SEQUENCE / LANGUAGE OPTION -->
 			<Action Type="Input" Name="SelectComputerNameTSAction" Title="Select TS" ShowBack="True">
@@ -56,6 +56,9 @@
 <!-- VARIABLES TASK SEQUENCE -->
 			<Action Type="TSVar" Name="SMSTSPreferredAdvertID" Condition='"%SelectTSInputChoice%" = "TS_Windows-11"'>"LL12000F"'</Action>
 			<Action Type="TSVar" Name="SMSTSPreferredAdvertID" Condition='"%SelectTSInputChoice%" = "TS_Windows-11-TEST"'>"LL120012"'</Action>
+
+<!-- VARIABLES BASE BUNDLE -->
+
 
 <!-- SELECT TOP BRANCH ACTIVE DIRECTORY -->
 			<Action Type="Input" Name="TopBranchAction" Title="Groupe principal" ShowBack="True">
@@ -174,27 +177,27 @@
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_VERCORS"'>"LDAP://OU=VERCORS,OU=OU-LOCAL,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
 
 	<!-- VARIABLES ACTIVE DIRECTORY OU ENTITES -->
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
 
 	<!-- VARIABLES ACTIVE DIRECTORY OU LABORATOIRES -->
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
 
 	<!-- VARIABLES ACTIVE DIRECTORY OU UFR -->
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
 
 <!-- SELECT SITE -->
 			<!--<Action Type="Input" Name="SelectSite" Title="Configuration du déploiement" Timeout="0" ShowBack="True">
