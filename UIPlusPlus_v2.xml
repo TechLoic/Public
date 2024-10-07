@@ -32,8 +32,8 @@
 <!-- CHOICES VARIABLES DECLARATIONS -->
 			<Action Type="TSVar" Variable="LangList">"English US"</Action>
 			<Action Type="TSVar" Variable="LangCodes">"en-US"</Action>
-			<Action Type="TSVar" Variable="KeybList">"English US"</Action>
-			<Action Type="TSVar" Variable="KeybCodes">"en-US"</Action>
+			<Action Type="TSVar" Variable="KeybList">"Français,English US"</Action>
+			<Action Type="TSVar" Variable="KeybCodes">"fr-FR,en-US"</Action>
 
 <!-- SELECT COMPUTER NAME / TASK SEQUENCE / LANGUAGE OPTION -->
 			<Action Type="Input" Name="SelectComputerNameTSAction" Title="Select TS" ShowBack="True">
@@ -200,25 +200,32 @@
 			<ActionGroup Name="Customization" Condition='"%ChangeDefaults%" = "True"'>
 				
 				<!-- CHANGE DEFAULT LANGUAGE -->
-				<Action Type="Input" Name="myInput" Title="Please answer the following" ShowBack="True">
-					<InputChoice Variable="UILanguage" AlternateVariable="OSDWindowsSettingsUILanguage" Question="Windows Language:" Required="True">
+				<Action Type="Input" Name="myInput" Title="Selectionner la langue" ShowBack="True">
+					<InputChoice Variable="UILanguage" AlternateVariable="OSDWindowsSettingsUILanguage" Question="Langue de l'interface utilisateur :" Required="True">
 						<ChoiceList OptionList="%LangList%" AlternateValueList="%LangCodes%"/>
 					</InputChoice>
 					
 				<!-- CHANGE DEFAULT KEYBOARD - this changes the locale for that input too -->
-					<InputChoice Variable="KeyboardLayout" Question="Keyboard Layout:" Required="True">
+					<InputChoice Variable="KeyboardLayout" Question="Disposition du clavier :" Required="True">
 						<ChoiceList OptionList="%KeybList%" AlternateValueList="%KeybCodes%"/>
 					</InputChoice>	
 				</Action>
 
 				<Action Type="Switch" OnValue='%KeyboardLayout%' DontEval="True">
+					<Case RegEx="Français">
+						<Variable Name="UILanguage">"English US"</Variable>
+						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
+						<Variable Name="OSDWindowsSettingsUILanguage">"en-US"</Variable>
+						<Variable Name="OSDWindowsSettingsInputLocale">"fr-FR"</Variable>
+						<Variable Name="OSDWindowsSettingsUserLocale">"en-US"</Variable>
+					</Case>
 					<Case RegEx="English US">
 						<Variable Name="UILanguage">"English US"</Variable>
 						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
 						<Variable Name="OSDWindowsSettingsUILanguage">"en-US"</Variable>
 						<Variable Name="OSDWindowsSettingsInputLocale">"en-US"</Variable>
 						<Variable Name="OSDWindowsSettingsUserLocale">"en-US"</Variable>
-						</Case>
+					</Case>
 				</Action>
 			</ActionGroup>
 
