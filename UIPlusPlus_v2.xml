@@ -117,7 +117,7 @@
 				</Action>
 
 				<!-- OPTION ENTITES -->
-				<Action Type="Input" Name="SubBranchAction_ENTITES" Title="SubBranchAction_ENTITES" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_ENTITES"'>
+				<Action Type="Input" Name="SubBranchAction_ENTITES" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_ENTITES"'>
 					<InputChoice Variable="SubBranchInputChoice_ENTITES" Question="Sélectionner l'entité :" Required="True" Sort="False" DropDownSize="10" Default="GRENOBLE-INP">
 						<Choice Option="GRENOBLE-INP" Value="ENTITES_GRENOBLE-INP"/>
 						<Choice Option="IEP" Value="ENTITES_IEP"/>
@@ -125,7 +125,7 @@
 				</Action>
 
 				<!-- OPTION LABORATOIRES -->
-				<Action Type="Input" Name="SubBranchAction_LABORATOIRES" Title="SubBranchAction_LABORATOIRES" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_LABORATOIRES"'>
+				<Action Type="Input" Name="SubBranchAction_LABORATOIRES" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_LABORATOIRES"'>
 					<InputChoice Variable="SubBranchInputChoice_LABORATOIRES" Question="Sélectionner le laboratoire :" Required="True" Sort="False" DropDownSize="10" Default="DCM">
 						<Choice Option="DCM" Value="LABORATOIRES_DCM"/>
 						<Choice Option="IGE" Value="LABORATOIRES_IGE"/>
@@ -142,7 +142,7 @@
 				</Action>
 
 				<!-- OPTION UFR -->
-				<Action Type="Input" Name="SubBranchAction_UFR" Title="SubBranchAction_UFR" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_UFR"'>
+				<Action Type="Input" Name="SubBranchAction_UFR" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_UFR"'>
 					<InputChoice Variable="SubBranchInputChoice_UFR" Question="Sélectionner l'UFR :" Required="True" Sort="False" DropDownSize="10" Default="IUGA">
 						<Choice Option="IUGA" Value="UFR_IUGA"/>
 						<Choice Option="PHITEM" Value="UFR_PHITEM"/>
