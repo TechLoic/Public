@@ -158,6 +158,7 @@
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_IMAB"'>"LDAP://OU=IMAB,OU=OU-CLOUD,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_VALENCE"'>"LDAP://OU=VALENCE,OU=OU-CLOUD,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_VERCORS"'>"LDAP://OU=VERCORS,OU=OU-CLOUD,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="RecapDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_VERCORS"'>"SCOPE-DGDSI → OU-CLOUD → VERCORS"'</Action>
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_BELLEDONNE"'>"LDAP://OU=BELLEDONNE,OU=OU-ETU,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_CHARTREUSE"'>"LDAP://OU=CHARTREUSE,OU=OU-ETU,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_IMAB"'>"LDAP://OU=IMAB,OU=OU-ETU,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
@@ -237,7 +238,7 @@
 			<Action Type="Info" Name="SummaryWindow" Title="Finalisation" ShowBack="True">
 				<![CDATA[Résumé de déploiement : <br><hr>
 					<b>💻 Nom de l'ordinateur :</b> %OSDComputerName%<br>
-					<b>🗃️ Nom de l'OU :</b> %TopBranchInputChoice%<br>
+					<b>🗃️ Nom de l'OU :</b> %RecapDomainOUName%<br>
 					<b>🔤 Langue de l'interface utilisateur :</b> %UILanguage%<br>
 					<b>⌨️ Disposition du clavier :</b> %KeyboardLayout%<br>
 					<b>🌐 Adresse IP :</b> %XIPAddress%<br>
