@@ -313,9 +313,9 @@
 				<![CDATA[Résumé de déploiement : <br><hr>
 					<b>💻 Nom de l'ordinateur :</b> %OSDComputerName%<br>
 					<b>💻 Bundle de base :</b> %BaseBundleStatus%<br>
-					<b>🗃️ AD OU :</b> %SummaryDomainOUName%<br>
 					<b>🔤 Langue de l'interface utilisateur :</b> %UILanguage%<br>
 					<b>⌨️ Disposition du clavier :</b> %KeyboardLayout%<br>
+					<b>🗃️ AD OU :</b> %SummaryDomainOUName%<br>
 					<b>🌐 Adresse IP :</b> %XIPAddress%<br>
 				]]>
 			</Action>
