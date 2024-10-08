@@ -310,7 +310,7 @@
 
 <!-- SUMMARY WINDOW -->
 			<Action Type="Info" Name="SummaryWindow" Title="Finalisation" ShowBack="True">
-				<![CDATA[Résumé de déploiement : <br><hr>
+				<![CDATA[Résumé du déploiement : <br><hr>
 					<b>💻 Nom de l'ordinateur :</b> %OSDComputerName%<br>
 					<b>💻 Bundle de base :</b> %BaseBundleStatus%<br>
 					<b>🔤 Langue de l'interface utilisateur :</b> %UILanguage%<br>
