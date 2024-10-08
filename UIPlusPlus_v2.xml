@@ -41,7 +41,7 @@
 			<Action Type="TSVar" Variable="KeybCodes">"fr-FR,en-US"</Action>
 
 <!-- SELECT COMPUTER NAME / TASK SEQUENCE / LANGUAGE OPTION -->
-			<Action Type="Input" Name="SelectComputerNameTSAction" Title="Configuration du poste" ShowBack="True">
+			<Action Type="Input" Name="SelectComputerNameTSAction" Title="Configuration du poste" ShowBack="True" Size="Tall">
 				<TextInput Prompt="Nom de l'ordinateur" Hint="Entrer le nom de l'ordinateur" RegEx="[^\&quot;/\\\[\]:;\|=,\+\*\?&gt;&lt;]{3,15}" Variable="ZZComputerName" Question="Nom de l'ordinateur :" Default="%OSDComputerName%"/>
 			  	<InputChoice Variable="SelectTSInputChoice" Question="Sélectionner la séquence de tâche :" Required="True" Sort="False" DropDownSize="10" Default="Windows 11">
 					<Choice Option="Windows 11" Value="TS_Windows-11"/>
