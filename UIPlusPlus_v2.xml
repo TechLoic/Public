@@ -58,7 +58,7 @@
 					<Choice Option="LABORATOIRES" Value="TopBranch_LABORATOIRES"/>
 					<Choice Option="UFR" Value="TopBranch_UFR"/>
 				</InputChoice>
-				
+				 
 				<InputCheckbox Variable="BaseBundle" Question="Installer le bundle de base" CheckedValue="True" UncheckedValue="False" Default="True"/>
 				<InputCheckbox Variable="ChangeDefaults" Question="Modifier les paramètres de localisation par défaut" CheckedValue="True" UncheckedValue="False" Default="False"/>
 			</Action>
