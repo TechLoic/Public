@@ -42,6 +42,7 @@
 
 <!-- SELECT COMPUTER NAME / TASK SEQUENCE / LANGUAGE OPTION -->
 			<Action Type="Input" Name="SelectComputerNameTSAction" Title="Configuration du poste" ShowBack="True" Size="Tall">
+				<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
 				<TextInput Prompt="Nom de l'ordinateur" Hint="Entrer le nom de l'ordinateur" RegEx="[^\&quot;/\\\[\]:;\|=,\+\*\?&gt;&lt;]{3,15}" Variable="ZZComputerName" Question="Nom de l'ordinateur :" Default="%OSDComputerName%"/>
 				<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
 				<InputChoice Variable="SelectTSInputChoice" Question="Sélectionner la séquence de tâche :" Required="True" Sort="False" DropDownSize="10" Default="Windows 11">
