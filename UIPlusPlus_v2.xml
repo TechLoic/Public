@@ -43,12 +43,12 @@
 <!-- SELECT COMPUTER NAME / TASK SEQUENCE / LANGUAGE OPTION -->
 			<Action Type="Input" Name="SelectComputerNameTSAction" Title="Configuration du poste" ShowBack="True" Size="Tall">
 				<TextInput Prompt="Nom de l'ordinateur" Hint="Entrer le nom de l'ordinateur" RegEx="[^\&quot;/\\\[\]:;\|=,\+\*\?&gt;&lt;]{3,15}" Variable="ZZComputerName" Question="Nom de l'ordinateur :" Default="%OSDComputerName%"/>
-				<InputInfo Color="#000000"></InputInfo>
+				<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
 				<InputChoice Variable="SelectTSInputChoice" Question="Sélectionner la séquence de tâche :" Required="True" Sort="False" DropDownSize="10" Default="Windows 11">
 					<Choice Option="Windows 11" Value="TS_Windows-11"/>
 					<Choice Option="Windows 11 - TEST" Value="TS_Windows-11-TEST"/>
 				</InputChoice>
-				<InputInfo Color="#000000"></InputInfo>
+				<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
 				<InputChoice Variable="TopBranchInputChoice" Question="Sélectionner l'OU principale :" Required="True" Sort="False" DropDownSize="10" Default="SCOPE-DGDSI → OU-CLOUD">
 					<Choice Option="SCOPE-DGDSI → OU-CLOUD" Value="TopBranch_SCOPE-DGDSI_OU-CLOUD"/>
 					<Choice Option="SCOPE-DGDSI → OU-ETU" Value="TopBranch_SCOPE-DGDSI_OU-ETU"/>
@@ -58,7 +58,7 @@
 					<Choice Option="LABORATOIRES" Value="TopBranch_LABORATOIRES"/>
 					<Choice Option="UFR" Value="TopBranch_UFR"/>
 				</InputChoice>
-				<InputInfo Color="#000000"></InputInfo>
+				<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
 				<InputCheckbox Variable="BaseBundle" Question="Installer le bundle de base" CheckedValue="True" UncheckedValue="False" Default="True"/>
 				<InputCheckbox Variable="ChangeDefaults" Question="Modifier les paramètres de localisation par défaut" CheckedValue="True" UncheckedValue="False" Default="False"/>
 			</Action>
