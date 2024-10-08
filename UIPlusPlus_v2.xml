@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--###########################-->
 <!-- Loïc LEFORESTIER - v1.0.0 -->
 <!--###########################-->
-<?xml version="1.0" encoding="utf-8"?>
 <UIpp Title="DGDSI UGA" Icon="UGA.ico" Color="#2a2e46">
 	<Actions>
 	
@@ -154,49 +154,118 @@
 <!-- SETUP ACTIVE DIRECTORY OU -->
 	<!-- VARIABLES ACTIVE DIRECTORY OU SCOPE-DGDSI -->
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_BELLEDONNE"'>"LDAP://OU=BELLEDONNE,OU=OU-CLOUD,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_BELLEDONNE"'>"SCOPE-DGDSI → OU-CLOUD → BELLEDONNE"'</Action>
+
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_CHARTREUSE"'>"LDAP://OU=CHARTREUSE,OU=OU-CLOUD,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_CHARTREUSE"'>"SCOPE-DGDSI → OU-CLOUD → CHARTREUSE"'</Action>
+
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_IMAB"'>"LDAP://OU=IMAB,OU=OU-CLOUD,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_IMAB"'>"SCOPE-DGDSI → OU-CLOUD → IMAB"'</Action>
+
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_VALENCE"'>"LDAP://OU=VALENCE,OU=OU-CLOUD,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_VALENCE"'>"SCOPE-DGDSI → OU-CLOUD → VALENCE"'</Action>
+
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_VERCORS"'>"LDAP://OU=VERCORS,OU=OU-CLOUD,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
-				<Action Type="TSVar" Name="RecapDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_VERCORS"'>"SCOPE-DGDSI → OU-CLOUD → VERCORS"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_VERCORS"'>"SCOPE-DGDSI → OU-CLOUD → VERCORS"'</Action>
+
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_BELLEDONNE"'>"LDAP://OU=BELLEDONNE,OU=OU-ETU,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_BELLEDONNE"'>"SCOPE-DGDSI → OU-ETU → BELLEDONNE"'</Action>
+
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_CHARTREUSE"'>"LDAP://OU=CHARTREUSE,OU=OU-ETU,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_CHARTREUSE"'>"SCOPE-DGDSI → OU-ETU → CHARTREUSE"'</Action>
+
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_IMAB"'>"LDAP://OU=IMAB,OU=OU-ETU,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_IMAB"'>"SCOPE-DGDSI → OU-ETU → IMAB"'</Action>
+
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_VALENCE"'>"LDAP://OU=VALENCE,OU=OU-ETU,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_VALENCE"'>"SCOPE-DGDSI → OU-ETU → VALENCE"'</Action>
+
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_VERCORS"'>"LDAP://OU=VERCORS,OU=OU-ETU,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_VERCORS"'>"SCOPE-DGDSI → OU-ETU → VERCORS"'</Action>
+
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT%" = "SCOPE-DGDSI_OU-ITINERANT_BELLEDONNE"'>"LDAP://OU=BELLEDONNE,OU=OU-ITINERANT,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT%" = "SCOPE-DGDSI_OU-ITINERANT_BELLEDONNE"'>"SCOPE-DGDSI → OU-ITINERANT → BELLEDONNE"'</Action>
+
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT%" = "SCOPE-DGDSI_OU-ITINERANT_CHARTREUSE"'>"LDAP://OU=CHARTREUSE,OU=OU-ITINERANT,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT%" = "SCOPE-DGDSI_OU-ITINERANT_CHARTREUSE"'>"SCOPE-DGDSI → OU-ITINERANT → CHARTREUSE"'</Action>
+
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT%" = "SCOPE-DGDSI_OU-ITINERANT_IMAB"'>"LDAP://OU=IMAB,OU=OU-ITINERANT,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT%" = "SCOPE-DGDSI_OU-ITINERANT_IMAB"'>"SCOPE-DGDSI → OU-ITINERANT → IMAB"'</Action>
+
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT%" = "SCOPE-DGDSI_OU-ITINERANT_VALENCE"'>"LDAP://OU=VALENCE,OU=OU-ITINERANT,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT%" = "SCOPE-DGDSI_OU-ITINERANT_VALENCE"'>"SCOPE-DGDSI → OU-ITINERANT → VALENCE"'</Action>
+
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT%" = "SCOPE-DGDSI_OU-ITINERANT_VERCORS"'>"LDAP://OU=VERCORS,OU=OU-ITINERANT,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT%" = "SCOPE-DGDSI_OU-ITINERANT_VERCORS"'>"SCOPE-DGDSI → OU-ITINERANT → VERCORS"'</Action>
+
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_BELLEDONNE"'>"LDAP://OU=BELLEDONNE,OU=OU-LOCAL,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_BELLEDONNE"'>"SCOPE-DGDSI → OU-LOCAL → BELLEDONNE"'</Action>
+
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_CHARTREUSE"'>"LDAP://OU=CHARTREUSE,OU=OU-LOCAL,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_CHARTREUSE"'>"SCOPE-DGDSI → OU-LOCAL → CHARTREUSE"'</Action>
+
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_IMAB"'>"LDAP://OU=IMAB,OU=OU-LOCAL,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_IMAB"'>"SCOPE-DGDSI → OU-LOCAL → IMAB"'</Action>
+
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_VALENCE"'>"LDAP://OU=VALENCE,OU=OU-LOCAL,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_VALENCE"'>"SCOPE-DGDSI → OU-LOCAL → VALENCE"'</Action>
+
 			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_VERCORS"'>"LDAP://OU=VERCORS,OU=OU-LOCAL,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_VERCORS"'>"SCOPE-DGDSI → OU-LOCAL → VERCORS"'</Action>
 
 	<!-- VARIABLES ACTIVE DIRECTORY OU ENTITES -->
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
 
 	<!-- VARIABLES ACTIVE DIRECTORY OU LABORATOIRES -->
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
 
 	<!-- VARIABLES ACTIVE DIRECTORY OU UFR -->
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
-			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=Minneapolis,OU=Workstations,OU=RECAST,DC=corp,DC=viamonstra,DC=com"'</Action>
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
 
 <!-- CHANGE DEFAULT LOCALIZATION SETTINGS -->
 			<ActionGroup Name="Customization" Condition='"%ChangeDefaults%" = "True"'>
@@ -238,7 +307,7 @@
 			<Action Type="Info" Name="SummaryWindow" Title="Finalisation" ShowBack="True">
 				<![CDATA[Résumé de déploiement : <br><hr>
 					<b>💻 Nom de l'ordinateur :</b> %OSDComputerName%<br>
-					<b>🗃️ Nom de l'OU :</b> %RecapDomainOUName%<br>
+					<b>🗃️ AD OU :</b> %SummaryDomainOUName%<br>
 					<b>🔤 Langue de l'interface utilisateur :</b> %UILanguage%<br>
 					<b>⌨️ Disposition du clavier :</b> %KeyboardLayout%<br>
 					<b>🌐 Adresse IP :</b> %XIPAddress%<br>
