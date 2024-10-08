@@ -11,6 +11,8 @@
 
 <!-- START MAIN THREAD -->
 		<ActionGroup Name="MAIN THREAD">
+			<Action Type="TSVar" Name="TPMStatus" Condition='"%XTPMEnabled%" = "True"'>"Activé"'</Action>
+			<Action Type="TSVar" Name="SecureBootStatus" Condition='"%XSystemSecureBoot%" = "True"'>"Activé"'</Action>
 
 <!-- USER AUTH -->
 		<Action Type="UserAuth" Title="Authentification" Domain="labloic.local" DomainController="mcm-ad.labloic.local" GetGroups="True" MaxRetryCount="5" DisableCancel="True" Group="Admins du domaine">
@@ -25,8 +27,8 @@
 					<b>💻 Modèle :</b> %XHWModel%<br>
 					<b>🔢 Numéro de série :</b> %XHWSerialNumber%<br>
 					<b>🌐 Adresse IP :</b> %XIPAddress% (%XMACAddress%)<br>
-					<b>⚙️ Puce TPM :</b> %XTPMEnabled%<br>
-					<b>🔒 Secure Boot :</b> %XSystemSecureBoot%<br>
+					<b>⚙️ Puce TPM :</b> %TPMStatus%<br>
+					<b>🔒 Secure Boot :</b> %SecureBootStatus%<br>
 				]]>
 			</Action>
 
@@ -46,6 +48,7 @@
 				<InputCheckbox Variable="BaseBundle" Question="Installer le bundle de base" CheckedValue="True" UncheckedValue="False" Default="True"/>
 				<InputCheckbox Variable="ChangeDefaults" Question="Modifier les paramètres de localisation par défaut" CheckedValue="True" UncheckedValue="False" Default="False"/>
 			</Action>
+			<Action Type="TSVar" Name="BaseBundleStatus" Condition='"%BaseBundle%" = "True"'>"Oui"'</Action>
 
 <!-- VARIABLES COMPUTER NAME -->
 			<Action Type="TSVar" Name="OSDComputerName" >"%ZZComputerName%"</Action>
@@ -307,6 +310,7 @@
 			<Action Type="Info" Name="SummaryWindow" Title="Finalisation" ShowBack="True">
 				<![CDATA[Résumé de déploiement : <br><hr>
 					<b>💻 Nom de l'ordinateur :</b> %OSDComputerName%<br>
+					<b>💻 Bundle de base :</b> %BaseBundleStatus%<br>
 					<b>🗃️ AD OU :</b> %SummaryDomainOUName%<br>
 					<b>🔤 Langue de l'interface utilisateur :</b> %UILanguage%<br>
 					<b>⌨️ Disposition du clavier :</b> %KeyboardLayout%<br>
