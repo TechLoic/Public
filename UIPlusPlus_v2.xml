@@ -12,7 +12,9 @@
 <!-- START MAIN THREAD -->
 		<ActionGroup Name="MAIN THREAD">
 			<Action Type="TSVar" Name="TPMStatus" Condition='"%XTPMEnabled%" = "True"'>"Activé"'</Action>
+			<Action Type="TSVar" Name="TPMStatus" Condition='"%XTPMEnabled%" = "False"'>"Désactivé"'</Action>
 			<Action Type="TSVar" Name="SecureBootStatus" Condition='"%XSystemSecureBoot%" = "True"'>"Activé"'</Action>
+			<Action Type="TSVar" Name="SecureBootStatus" Condition='"%XSystemSecureBoot%" = "False"'>"Désactivé"'</Action>
 
 <!-- USER AUTH -->
 		<Action Type="UserAuth" Title="Authentification" Domain="labloic.local" DomainController="mcm-ad.labloic.local" GetGroups="True" MaxRetryCount="5" DisableCancel="True" Group="Admins du domaine">
