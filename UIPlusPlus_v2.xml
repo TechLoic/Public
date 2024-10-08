@@ -33,7 +33,7 @@
 					🌐 Adresse IP : <b>%XIPAddress% (%XMACAddress%)</b><br>
 					⚙️ Puce TPM : <b>%TPMStatus%</b><br>
 					🔒 Secure Boot : <b>%SecureBootStatus%</b><br>
-					🔋 Alimentation : <b>%SecureBootStatus%</b><br>
+					🔋 Alimentation : <b>%ACDCStatus%</b><br>
 				]]>
 			</Action>
 
