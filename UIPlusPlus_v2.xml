@@ -26,11 +26,11 @@
 <!-- STARTUP SCREEN -->
 			<Action Type="Info" Name="StartupScreen" Title="Bienvenue %XAuthenticatedUserDisplayName%" Image="topbanner.png" ShowCancel="False" Timeout="0" TimeoutAction="Continue">
 				<![CDATA[
-					<b>💻 Modèle :</b> %XHWModel%<br>
-					<b>🔢 Numéro de série :</b> %XHWSerialNumber%<br>
-					<b>🌐 Adresse IP :</b> %XIPAddress% (%XMACAddress%)<br>
-					<b>⚙️ Puce TPM :</b> %TPMStatus%<br>
-					<b>🔒 Secure Boot :</b> %SecureBootStatus%<br>
+					💻 Modèle : <b>%XHWModel%</b><br>
+					🔢 Numéro de série : <b>%XHWSerialNumber%</b><br>
+					🌐 Adresse IP : <b>%XIPAddress% (%XMACAddress%)</b><br>
+					⚙️ Puce TPM : <b>%TPMStatus%</b><br>
+					🔒 Secure Boot : <b>%SecureBootStatus%</b><br>
 				]]>
 			</Action>
 
