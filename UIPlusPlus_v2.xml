@@ -325,11 +325,11 @@
 <!-- SUMMARY WINDOW -->
 			<Action Type="Info" Name="SummaryWindow" Title="Résumé du déploiement" ShowBack="True">
 				<![CDATA[
-					<b>💻 Nom de l'ordinateur :</b> %OSDComputerName%<br>
-					<b>💻 Bundle de base :</b> %BaseBundleStatus%<br>
-					<b>🔤 Langue de l'interface utilisateur :</b> %UILanguage%<br>
-					<b>⌨️ Disposition du clavier :</b> %KeyboardLayout%<br>
-					<b>🗃️ AD OU :</b> %SummaryDomainOUName%<br>
+					💻 Nom de l'ordinateur : <b>%OSDComputerName%</b><br>
+					💿 Bundle de base : <b>%BaseBundleStatus%</b><br>
+					🔤 Langue de l'interface utilisateur : <b>%UILanguage%</b><br>
+					⌨️ Disposition du clavier : <b>%KeyboardLayout%</b><br>
+					🗃️ AD OU : <b>%SummaryDomainOUName%</b><br>
 				]]>
 			</Action>
 		</ActionGroup>
