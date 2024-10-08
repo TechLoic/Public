@@ -47,6 +47,15 @@
 					<Choice Option="Windows 11" Value="TS_Windows-11"/>
 					<Choice Option="Windows 11 - TEST" Value="TS_Windows-11-TEST"/>
 				</InputChoice>
+				<InputChoice Variable="TopBranchInputChoice" Question="Sélectionner l'OU principale :" Required="True" Sort="False" DropDownSize="10" Default="SCOPE-DGDSI → OU-CLOUD">
+					<Choice Option="SCOPE-DGDSI → OU-CLOUD" Value="TopBranch_SCOPE-DGDSI_OU-CLOUD"/>
+					<Choice Option="SCOPE-DGDSI → OU-ETU" Value="TopBranch_SCOPE-DGDSI_OU-ETU"/>
+					<Choice Option="SCOPE-DGDSI → OU-ITINERANT" Value="TopBranch_SCOPE-DGDSI_OU-ITINERANT"/>
+					<Choice Option="SCOPE-DGDSI → OU-LOCAL" Value="TopBranch_SCOPE-DGDSI_OU-LOCAL"/>
+					<Choice Option="ENTITES" Value="TopBranch_ENTITES"/>
+					<Choice Option="LABORATOIRES" Value="TopBranch_LABORATOIRES"/>
+					<Choice Option="UFR" Value="TopBranch_UFR"/>
+				</InputChoice>
 				<InputCheckbox Variable="BaseBundle" Question="Installer le bundle de base" CheckedValue="True" UncheckedValue="False" Default="True"/>
 				<InputCheckbox Variable="ChangeDefaults" Question="Modifier les paramètres de localisation par défaut" CheckedValue="True" UncheckedValue="False" Default="False"/>
 			</Action>
@@ -65,7 +74,7 @@
 			<Action Type="TSVar" Name="UILanguage" Condition='"%ChangeDefaults%" = "False"'>"Français"'</Action>
 
 <!-- SELECT TOP BRANCH ACTIVE DIRECTORY -->
-			<Action Type="Input" Name="TopBranchAction" Title="Emplacement dans l'Active Directory" ShowBack="True">
+			<!--<Action Type="Input" Name="TopBranchAction" Title="Emplacement dans l'Active Directory" ShowBack="True">
 			  	<InputChoice Variable="TopBranchInputChoice" Question="Sélectionner l'OU principale :" Required="True" Sort="False" DropDownSize="10" Default="SCOPE-DGDSI → OU-CLOUD">
 					<Choice Option="SCOPE-DGDSI → OU-CLOUD" Value="TopBranch_SCOPE-DGDSI_OU-CLOUD"/>
 					<Choice Option="SCOPE-DGDSI → OU-ETU" Value="TopBranch_SCOPE-DGDSI_OU-ETU"/>
@@ -75,7 +84,7 @@
 					<Choice Option="LABORATOIRES" Value="TopBranch_LABORATOIRES"/>
 					<Choice Option="UFR" Value="TopBranch_UFR"/>
 				</InputChoice>
-			</Action>
+			</Action>-->
 
 <!-- SELECT SUB BRANCH ACTIVE DIRECTORY -->
 				<!-- OPTION SCOPE-DGDSI OU-CLOUD -->
