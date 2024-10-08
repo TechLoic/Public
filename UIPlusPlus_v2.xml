@@ -15,6 +15,8 @@
 			<Action Type="TSVar" Name="TPMStatus" Condition='"%XTPMEnabled%" = "False"'>"Désactivée"'</Action>
 			<Action Type="TSVar" Name="SecureBootStatus" Condition='"%XSystemSecureBoot%" = "True"'>"Activé"'</Action>
 			<Action Type="TSVar" Name="SecureBootStatus" Condition='"%XSystemSecureBoot%" = "False"'>"Désactivé"'</Action>
+			<Action Type="TSVar" Name="ACDCStatus" Condition='"%XOnBattery%" = "True"'>"Sur batterie (DC)"'</Action>
+			<Action Type="TSVar" Name="ACDCStatus" Condition='"%XOnBattery%" = "False"'>"Branché (AC)"'</Action>
 
 <!-- USER AUTH -->
 		<Action Type="UserAuth" Title="Authentification" Domain="labloic.local" DomainController="mcm-ad.labloic.local" GetGroups="True" MaxRetryCount="5" DisableCancel="True" Group="Admins du domaine">
@@ -31,6 +33,7 @@
 					🌐 Adresse IP : <b>%XIPAddress% (%XMACAddress%)</b><br>
 					⚙️ Puce TPM : <b>%TPMStatus%</b><br>
 					🔒 Secure Boot : <b>%SecureBootStatus%</b><br>
+					🔋 Alimentation : <b>%SecureBootStatus%</b><br>
 				]]>
 			</Action>
 
