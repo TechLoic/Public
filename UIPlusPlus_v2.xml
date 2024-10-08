@@ -95,6 +95,7 @@
 
 <!-- SELECT SUB BRANCH ACTIVE DIRECTORY -->
 				<!-- OPTION SCOPE-DGDSI OU-CLOUD -->
+				<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
 				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-CLOUD" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-CLOUD"'>
 					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD" Question="[OU-CLOUD] Sélectionner le secteur :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
 						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-CLOUD_BELLEDONNE"/>
@@ -106,6 +107,7 @@
 				</Action>
 
 				<!-- OPTION SCOPE-DGDSI OU-ETU -->
+				<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
 				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-ETU" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-ETU"'>
 					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-ETU" Question="[OU-ETU] Sélectionner le secteur :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
 						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-ETU_BELLEDONNE"/>
@@ -117,6 +119,7 @@
 				</Action>
 
 				<!-- OPTION SCOPE-DGDSI OU-ITINERANT -->
+				<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
 				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-ITINERANT" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-ITINERANT"'>
 					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT" Question="[OU-ITINERANT] Sélectionner le secteur :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
 						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-ITINERANT_BELLEDONNE"/>
@@ -128,6 +131,7 @@
 				</Action>
 
 				<!-- OPTION SCOPE-DGDSI OU-LOCAL -->
+				<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
 				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-LOCAL" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-LOCAL"'>
 					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL" Question="[OU-LOCAL] Sélectionner le secteur :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
 						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-LOCAL_BELLEDONNE"/>
@@ -139,6 +143,7 @@
 				</Action>
 
 				<!-- OPTION ENTITES -->
+				<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
 				<Action Type="Input" Name="SubBranchAction_ENTITES" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_ENTITES"'>
 					<InputChoice Variable="SubBranchInputChoice_ENTITES" Question="Sélectionner l'entité :" Required="True" Sort="False" DropDownSize="10" Default="GRENOBLE-INP">
 						<Choice Option="GRENOBLE-INP" Value="ENTITES_GRENOBLE-INP"/>
@@ -147,6 +152,7 @@
 				</Action>
 
 				<!-- OPTION LABORATOIRES -->
+				<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
 				<Action Type="Input" Name="SubBranchAction_LABORATOIRES" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_LABORATOIRES"'>
 					<InputChoice Variable="SubBranchInputChoice_LABORATOIRES" Question="Sélectionner le laboratoire :" Required="True" Sort="False" DropDownSize="10" Default="DCM">
 						<Choice Option="DCM" Value="LABORATOIRES_DCM"/>
@@ -164,6 +170,7 @@
 				</Action>
 
 				<!-- OPTION UFR -->
+				<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
 				<Action Type="Input" Name="SubBranchAction_UFR" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_UFR"'>
 					<InputChoice Variable="SubBranchInputChoice_UFR" Question="Sélectionner l'UFR :" Required="True" Sort="False" DropDownSize="10" Default="IUGA">
 						<Choice Option="IUGA" Value="UFR_IUGA"/>
