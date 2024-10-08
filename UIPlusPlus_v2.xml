@@ -319,7 +319,7 @@
 			<Action Type="TSVar" Name="OSDWindowsSettingsUILanguageFallback">"fr-FR"</Action> 	
 
 <!-- SUMMARY WINDOW -->
-			<Action Type="Info" Name="SummaryWindow" Title="Résumé du déploiement" ShowBack="True" Size="Tall">
+			<Action Type="Info" Name="SummaryWindow" Title="Résumé du déploiement" ShowBack="True">
 				<![CDATA[
 					<b>💻 Nom de l'ordinateur :</b> %OSDComputerName%<br>
 					<b>💻 Bundle de base :</b> %BaseBundleStatus%<br>
