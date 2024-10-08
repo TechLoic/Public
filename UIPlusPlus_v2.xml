@@ -30,7 +30,7 @@
 				<![CDATA[
 					💻 Modèle : <b>%XHWModel%</b><br>
 					🔢 Numéro de série : <b>%XHWSerialNumber%</b><br>
-					🌐 Adresse IP : <b>%XIPAddress% (%XMACAddress%)</b><br>
+					🌐 Adresse IP : <b>%XIPAddress% (MAC@ : %XMACAddress%)</b><br>
 					⚙️ Puce TPM : <b>%TPMStatus%</b><br>
 					🔒 Secure Boot : <b>%SecureBootStatus%</b><br>
 					🔋 Alimentation : <b>%ACDCStatus%</b><br>
