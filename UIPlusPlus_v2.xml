@@ -54,6 +54,7 @@
 <!-- VARIABLES COMPUTER NAME AND BUNDLE -->
 			<Action Type="TSVar" Name="OSDComputerName" >"%ZZComputerName%"</Action>
 			<Action Type="TSVar" Name="BaseBundleStatus" Condition='"%BaseBundle%" = "True"'>"Oui"'</Action>
+			<Action Type="TSVar" Name="BaseBundleStatus" Condition='"%BaseBundle%" = "False"'>"Non"'</Action>
 
 <!-- VARIABLES TASK SEQUENCE -->
 			<Action Type="TSVar" Name="SMSTSPreferredAdvertID" Condition='"%SelectTSInputChoice%" = "TS_Windows-11"'>"LL12000F"'</Action>
