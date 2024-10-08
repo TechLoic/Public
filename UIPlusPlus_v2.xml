@@ -25,7 +25,7 @@
 
 <!-- STARTUP SCREEN -->
 			<Action Type="Info" Name="StartupScreen" Title="Bienvenue %XAuthenticatedUserDisplayName%" Image="topbanner.png" ShowCancel="False" Timeout="0" TimeoutAction="Continue">
-				<![CDATA[Bienvenue sur l'outil de déploiement de l'UGA<br><br>
+				<![CDATA[
 					<b>💻 Modèle :</b> %XHWModel%<br>
 					<b>🔢 Numéro de série :</b> %XHWSerialNumber%<br>
 					<b>🌐 Adresse IP :</b> %XIPAddress% (%XMACAddress%)<br>
@@ -319,8 +319,8 @@
 			<Action Type="TSVar" Name="OSDWindowsSettingsUILanguageFallback">"fr-FR"</Action> 	
 
 <!-- SUMMARY WINDOW -->
-			<Action Type="Info" Name="SummaryWindow" Title="Finalisation" ShowBack="True" Size="Tall">
-				<![CDATA[Résumé du déploiement : <br><hr>
+			<Action Type="Info" Name="SummaryWindow" Title="Résumé du déploiement" ShowBack="True" Size="Tall">
+				<![CDATA[
 					<b>💻 Nom de l'ordinateur :</b> %OSDComputerName%<br>
 					<b>💻 Bundle de base :</b> %BaseBundleStatus%<br>
 					<b>🔤 Langue de l'interface utilisateur :</b> %UILanguage%<br>
