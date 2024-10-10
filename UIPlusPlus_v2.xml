@@ -305,7 +305,7 @@
 						<ChoiceList OptionList="%LangList%" AlternateValueList="%LangCodes%"/>
 					</InputChoice>
 					
-				<!-- CHANGE DEFAULT KEYBOARD - this changes the locale for that input too -->
+				<!-- CHANGE DEFAULT KEYBOARD -->
 					<InputChoice Variable="KeyboardLayout" Question="Disposition du clavier :" Required="True">
 						<ChoiceList OptionList="%KeybList%" AlternateValueList="%KeybCodes%"/>
 					</InputChoice>	
