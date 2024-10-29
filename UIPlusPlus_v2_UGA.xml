@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--###########################-->
+<!-- Loïc LEFORESTIER - v1.0.0 -->
+<!--###########################-->
+<UIpp Title="DGDSI UGA" Icon="UGA.ico" Color="#2a2e46">
+	<Actions>
+
+<!-- SCAN COMPUTER -->
+		<Action Type="DefaultValues"/>
+		<Action Type="ExternalCall" Title="Getting the computer's name from IPAM ...">PowerShell.exe -ExecutionPolicy ByPass -File .\GetPCName.ps1</Action>
+
+<!-- START MAIN THREAD -->
+		<ActionGroup Name="MAIN THREAD">
+			<Action Type="TSVar" Name="TPMStatus" Condition='"%XTPMEnabled%" = "True"'>"Activée"'</Action>
+			<Action Type="TSVar" Name="TPMStatus" Condition='"%XTPMEnabled%" = "False"'>"Désactivée"'</Action>
+			<Action Type="TSVar" Name="SecureBootStatus" Condition='"%XSystemSecureBoot%" = "True"'>"Activé"'</Action>
+			<Action Type="TSVar" Name="SecureBootStatus" Condition='"%XSystemSecureBoot%" = "False"'>"Désactivé"'</Action>
+			<Action Type="TSVar" Name="ACDCStatus" Condition='"%XOnBattery%" = "True"'>"Sur batterie (DC)"'</Action>
+			<Action Type="TSVar" Name="ACDCStatus" Condition='"%XOnBattery%" = "False"'>"Branché (AC)"'</Action>
+
+<!-- USER AUTH -->
+		<Action Type="UserAuth" Title="Authentification" Domain="labloic.local" DomainController="mcm-ad.labloic.local" GetGroups="True" MaxRetryCount="5" DisableCancel="True" Group="Admins du domaine">
+			<Field Name="Username" Question="Utilisateur :" Prompt="Veuillez respecter le schéma suivant" Hint="admin-xxx" RegEx="admin-[A-Za-z0-9]+"/>
+			<Field Name="Password" Question="Mot de passe :" Prompt="Mot de passe" Hint="Mot de passe du compte admin-xxx"/>
+			<Field Name="Domain" Question="Domaine :" List="labloic.local" AutoComplete="true"/>
+		</Action>
+
+<!-- STARTUP SCREEN -->
+			<Action Type="Info" Name="StartupScreen" Title="Bienvenue %XAuthenticatedUserDisplayName%" Image="topbanner.png" ShowCancel="False" Timeout="0" TimeoutAction="Continue">
+				<![CDATA[
+					💻 Modèle : <b>%XHWModel%</b><br>
+					🔢 Numéro de série : <b>%XHWSerialNumber%</b><br>
+					🌐 Adresse IP : <b>%XIPAddress% (MAC : %XMACAddress%)</b><br>
+					⚙️ Puce TPM : <b>%TPMStatus%</b><br>
+					🔒 Secure Boot : <b>%SecureBootStatus%</b><br>
+					🔋 Alimentation : <b>%ACDCStatus%</b><br>
+				]]>
+			</Action>
+
+<!-- CHOICES VARIABLES DECLARATIONS -->
+			<Action Type="TSVar" Variable="LangList">"English US"</Action>
+			<Action Type="TSVar" Variable="LangCodes">"en-US"</Action>
+			<Action Type="TSVar" Variable="KeybList">"Français,English US"</Action>
+			<Action Type="TSVar" Variable="KeybCodes">"fr-FR,en-US"</Action>
+
+<!-- SELECT COMPUTER NAME / TASK SEQUENCE / LANGUAGE OPTION -->
+			<Action Type="Input" Name="SelectComputerNameTSAction" Title="Configuration du poste" ShowBack="True" Size="Tall">
+				<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
+				<TextInput Prompt="Nom de l'ordinateur" Hint="Entrer le nom de l'ordinateur" RegEx="[^\&quot;/\\\[\]:;\|=,\+\*\?&gt;&lt;]{3,15}" Variable="ZZComputerName" Question="Nom de l'ordinateur :" Default="%OSDComputerName%"/>
+				<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
+				<InputChoice Variable="SelectTSInputChoice" Question="Sélectionner la séquence de tâche :" Required="True" Sort="False" DropDownSize="10" Default="Windows 11">
+					<Choice Option="Windows 11" Value="TS_Windows-11"/>
+					<Choice Option="Windows 11 - TEST" Value="TS_Windows-11-TEST"/>
+				</InputChoice>
+				<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
+				<InputChoice Variable="TopBranchInputChoice" Question="Sélectionner l'OU principale :" Required="True" Sort="False" DropDownSize="10" Default="SCOPE-DGDSI → OU-CLOUD">
+					<Choice Option="SCOPE-DGDSI → OU-CLOUD" Value="TopBranch_SCOPE-DGDSI_OU-CLOUD"/>
+					<Choice Option="SCOPE-DGDSI → OU-ETU" Value="TopBranch_SCOPE-DGDSI_OU-ETU"/>
+					<Choice Option="SCOPE-DGDSI → OU-ITINERANT" Value="TopBranch_SCOPE-DGDSI_OU-ITINERANT"/>
+					<Choice Option="SCOPE-DGDSI → OU-LOCAL" Value="TopBranch_SCOPE-DGDSI_OU-LOCAL"/>
+					<Choice Option="ENTITES" Value="TopBranch_ENTITES"/>
+					<Choice Option="LABORATOIRES" Value="TopBranch_LABORATOIRES"/>
+					<Choice Option="UFR" Value="TopBranch_UFR"/>
+				</InputChoice>
+				<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
+				<InputCheckbox Variable="BaseBundle" Question="Installer le bundle de base" CheckedValue="True" UncheckedValue="False" Default="True"/>
+				<InputCheckbox Variable="ChangeDefaults" Question="Modifier les paramètres de localisation par défaut" CheckedValue="True" UncheckedValue="False" Default="False"/>
+			</Action>
+
+<!-- VARIABLES COMPUTER NAME AND BUNDLE -->
+			<Action Type="TSVar" Name="OSDComputerName" >"%ZZComputerName%"</Action>
+			<Action Type="TSVar" Name="BaseBundleStatus" Condition='"%BaseBundle%" = "True"'>"Oui"'</Action>
+			<Action Type="TSVar" Name="BaseBundleStatus" Condition='"%BaseBundle%" = "False"'>"Non"'</Action>
+
+<!-- VARIABLES TASK SEQUENCE -->
+			<Action Type="TSVar" Name="SMSTSPreferredAdvertID" Condition='"%SelectTSInputChoice%" = "TS_Windows-11"'>"LL12000F"'</Action>
+			<Action Type="TSVar" Name="SMSTSPreferredAdvertID" Condition='"%SelectTSInputChoice%" = "TS_Windows-11-TEST"'>"LL120012"'</Action>
+
+<!-- VARIABLES LANGUAGE FR -->
+			<Action Type="TSVar" Name="KeyboardLayout" Condition='"%ChangeDefaults%" = "False"'>"Français"'</Action>
+			<Action Type="TSVar" Name="UILanguage" Condition='"%ChangeDefaults%" = "False"'>"Français"'</Action>
+
+<!-- SELECT TOP BRANCH ACTIVE DIRECTORY -->
+			<!--<Action Type="Input" Name="TopBranchAction" Title="Emplacement dans l'Active Directory" ShowBack="True">
+			  	<InputChoice Variable="TopBranchInputChoice" Question="Sélectionner l'OU principale :" Required="True" Sort="False" DropDownSize="10" Default="SCOPE-DGDSI → OU-CLOUD">
+					<Choice Option="SCOPE-DGDSI → OU-CLOUD" Value="TopBranch_SCOPE-DGDSI_OU-CLOUD"/>
+					<Choice Option="SCOPE-DGDSI → OU-ETU" Value="TopBranch_SCOPE-DGDSI_OU-ETU"/>
+					<Choice Option="SCOPE-DGDSI → OU-ITINERANT" Value="TopBranch_SCOPE-DGDSI_OU-ITINERANT"/>
+					<Choice Option="SCOPE-DGDSI → OU-LOCAL" Value="TopBranch_SCOPE-DGDSI_OU-LOCAL"/>
+					<Choice Option="ENTITES" Value="TopBranch_ENTITES"/>
+					<Choice Option="LABORATOIRES" Value="TopBranch_LABORATOIRES"/>
+					<Choice Option="UFR" Value="TopBranch_UFR"/>
+				</InputChoice>
+			</Action>-->
+
+<!-- SELECT SUB BRANCH ACTIVE DIRECTORY -->
+				<!-- OPTION SCOPE-DGDSI OU-CLOUD -->
+				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-CLOUD" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-CLOUD"'>
+					<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
+					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD" Question="[OU-CLOUD] Sélectionner le secteur :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
+						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-CLOUD_BELLEDONNE"/>
+						<Choice Option="CHARTREUSE" Value="SCOPE-DGDSI_OU-CLOUD_CHARTREUSE"/>
+						<Choice Option="IMAB" Value="SCOPE-DGDSI_OU-CLOUD_IMAB"/>
+						<Choice Option="VALENCE" Value="SCOPE-DGDSI_OU-CLOUD_VALENCE"/>
+						<Choice Option="VERCORS" Value="SCOPE-DGDSI_OU-CLOUD_VERCORS"/>
+					</InputChoice>
+				</Action>
+
+				<!-- OPTION SCOPE-DGDSI OU-ETU -->
+				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-ETU" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-ETU"'>
+					<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
+					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-ETU" Question="[OU-ETU] Sélectionner le secteur :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
+						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-ETU_BELLEDONNE"/>
+						<Choice Option="CHARTREUSE" Value="SCOPE-DGDSI_OU-ETU_CHARTREUSE"/>
+						<Choice Option="IMAB" Value="SCOPE-DGDSI_OU-ETU_IMAB"/>
+						<Choice Option="VALENCE" Value="SCOPE-DGDSI_OU-ETU_VALENCE"/>
+						<Choice Option="VERCORS" Value="SCOPE-DGDSI_OU-ETU_VERCORS"/>
+					</InputChoice>
+				</Action>
+
+				<!-- OPTION SCOPE-DGDSI OU-ITINERANT -->
+				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-ITINERANT" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-ITINERANT"'>
+					<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
+					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT" Question="[OU-ITINERANT] Sélectionner le secteur :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
+						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-ITINERANT_BELLEDONNE"/>
+						<Choice Option="CHARTREUSE" Value="SCOPE-DGDSI_OU-ITINERANT_CHARTREUSE"/>
+						<Choice Option="IMAB" Value="SCOPE-DGDSI_OU-ITINERANT_IMAB"/>
+						<Choice Option="VALENCE" Value="SCOPE-DGDSI_OU-ITINERANT_VALENCE"/>
+						<Choice Option="VERCORS" Value="SCOPE-DGDSI_OU-ITINERANT_VERCORS"/>
+					</InputChoice>
+				</Action>
+
+				<!-- OPTION SCOPE-DGDSI OU-LOCAL -->
+				<Action Type="Input" Name="SubBranchAction_SCOPE-DGDSI_OU-LOCAL" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_SCOPE-DGDSI_OU-LOCAL"'>
+					<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
+					<InputChoice Variable="SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL" Question="[OU-LOCAL] Sélectionner le secteur :" Required="True" Sort="False" DropDownSize="10" Default="VERCORS">
+						<Choice Option="BELLEDONNE" Value="SCOPE-DGDSI_OU-LOCAL_BELLEDONNE"/>
+						<Choice Option="CHARTREUSE" Value="SCOPE-DGDSI_OU-LOCAL_CHARTREUSE"/>
+						<Choice Option="IMAB" Value="SCOPE-DGDSI_OU-LOCAL_IMAB"/>
+						<Choice Option="VALENCE" Value="SCOPE-DGDSI_OU-LOCAL_VALENCE"/>
+						<Choice Option="VERCORS" Value="SCOPE-DGDSI_OU-LOCAL_VERCORS"/>
+					</InputChoice>
+				</Action>
+
+				<!-- OPTION ENTITES -->
+				<Action Type="Input" Name="SubBranchAction_ENTITES" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_ENTITES"'>
+					<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
+					<InputChoice Variable="SubBranchInputChoice_ENTITES" Question="Sélectionner l'entité :" Required="True" Sort="False" DropDownSize="10" Default="GRENOBLE-INP">
+						<Choice Option="GRENOBLE-INP" Value="ENTITES_GRENOBLE-INP"/>
+						<Choice Option="IEP" Value="ENTITES_IEP"/>
+					</InputChoice>
+				</Action>
+
+				<!-- OPTION LABORATOIRES -->
+				<Action Type="Input" Name="SubBranchAction_LABORATOIRES" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_LABORATOIRES"'>
+					<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
+					<InputChoice Variable="SubBranchInputChoice_LABORATOIRES" Question="Sélectionner le laboratoire :" Required="True" Sort="False" DropDownSize="10" Default="DCM">
+						<Choice Option="DCM" Value="LABORATOIRES_DCM"/>
+						<Choice Option="IGE" Value="LABORATOIRES_IGE"/>
+						<Choice Option="IPAG" Value="LABORATOIRES_IPAG"/>
+						<Choice Option="ISTERRE" Value="LABORATOIRES_ISTERRE"/>
+						<Choice Option="LECA" Value="LABORATOIRES_LECA"/>
+						<Choice Option="LIG" Value="LABORATOIRES_LIG"/>
+						<Choice Option="LJK" Value="LABORATOIRES_LJK"/>
+						<Choice Option="LRP" Value="LABORATOIRES_LRP"/>
+						<Choice Option="OSUG" Value="LABORATOIRES_OSUG"/>
+						<Choice Option="PACTE" Value="LABORATOIRES_PACTE"/>
+						<Choice Option="VERIMAG" Value="LABORATOIRES_VERIMAG"/>
+					</InputChoice>
+				</Action>
+
+				<!-- OPTION UFR -->
+				<Action Type="Input" Name="SubBranchAction_UFR" Title="Emplacement dans l'Active Directory" ShowBack="True" Condition='"%TopBranchInputChoice%" = "TopBranch_UFR"'>
+					<InputInfo Color="#000000"></InputInfo> <!--ACT AS A SPACER-->
+					<InputChoice Variable="SubBranchInputChoice_UFR" Question="Sélectionner l'UFR :" Required="True" Sort="False" DropDownSize="10" Default="IUGA">
+						<Choice Option="IUGA" Value="UFR_IUGA"/>
+						<Choice Option="PHITEM" Value="UFR_PHITEM"/>
+						<Choice Option="SANTE" Value="UFR_SANTE"/>
+						<Choice Option="STAPS" Value="UFR_STAPS"/>
+					</InputChoice>
+				</Action>
+
+<!-- SETUP ACTIVE DIRECTORY OU -->
+	<!-- VARIABLES ACTIVE DIRECTORY OU SCOPE-DGDSI -->
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_BELLEDONNE"'>"LDAP://OU=BELLEDONNE,OU=OU-CLOUD,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_BELLEDONNE"'>"SCOPE-DGDSI → OU-CLOUD → BELLEDONNE"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_CHARTREUSE"'>"LDAP://OU=CHARTREUSE,OU=OU-CLOUD,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_CHARTREUSE"'>"SCOPE-DGDSI → OU-CLOUD → CHARTREUSE"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_IMAB"'>"LDAP://OU=IMAB,OU=OU-CLOUD,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_IMAB"'>"SCOPE-DGDSI → OU-CLOUD → IMAB"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_VALENCE"'>"LDAP://OU=VALENCE,OU=OU-CLOUD,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_VALENCE"'>"SCOPE-DGDSI → OU-CLOUD → VALENCE"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_VERCORS"'>"LDAP://OU=VERCORS,OU=OU-CLOUD,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-CLOUD%" = "SCOPE-DGDSI_OU-CLOUD_VERCORS"'>"SCOPE-DGDSI → OU-CLOUD → VERCORS"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_BELLEDONNE"'>"LDAP://OU=BELLEDONNE,OU=OU-ETU,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_BELLEDONNE"'>"SCOPE-DGDSI → OU-ETU → BELLEDONNE"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_CHARTREUSE"'>"LDAP://OU=CHARTREUSE,OU=OU-ETU,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_CHARTREUSE"'>"SCOPE-DGDSI → OU-ETU → CHARTREUSE"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_IMAB"'>"LDAP://OU=IMAB,OU=OU-ETU,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_IMAB"'>"SCOPE-DGDSI → OU-ETU → IMAB"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_VALENCE"'>"LDAP://OU=VALENCE,OU=OU-ETU,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_VALENCE"'>"SCOPE-DGDSI → OU-ETU → VALENCE"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_VERCORS"'>"LDAP://OU=VERCORS,OU=OU-ETU,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ETU%" = "SCOPE-DGDSI_OU-ETU_VERCORS"'>"SCOPE-DGDSI → OU-ETU → VERCORS"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT%" = "SCOPE-DGDSI_OU-ITINERANT_BELLEDONNE"'>"LDAP://OU=BELLEDONNE,OU=OU-ITINERANT,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT%" = "SCOPE-DGDSI_OU-ITINERANT_BELLEDONNE"'>"SCOPE-DGDSI → OU-ITINERANT → BELLEDONNE"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT%" = "SCOPE-DGDSI_OU-ITINERANT_CHARTREUSE"'>"LDAP://OU=CHARTREUSE,OU=OU-ITINERANT,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT%" = "SCOPE-DGDSI_OU-ITINERANT_CHARTREUSE"'>"SCOPE-DGDSI → OU-ITINERANT → CHARTREUSE"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT%" = "SCOPE-DGDSI_OU-ITINERANT_IMAB"'>"LDAP://OU=IMAB,OU=OU-ITINERANT,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT%" = "SCOPE-DGDSI_OU-ITINERANT_IMAB"'>"SCOPE-DGDSI → OU-ITINERANT → IMAB"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT%" = "SCOPE-DGDSI_OU-ITINERANT_VALENCE"'>"LDAP://OU=VALENCE,OU=OU-ITINERANT,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT%" = "SCOPE-DGDSI_OU-ITINERANT_VALENCE"'>"SCOPE-DGDSI → OU-ITINERANT → VALENCE"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT%" = "SCOPE-DGDSI_OU-ITINERANT_VERCORS"'>"LDAP://OU=VERCORS,OU=OU-ITINERANT,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-ITINERANT%" = "SCOPE-DGDSI_OU-ITINERANT_VERCORS"'>"SCOPE-DGDSI → OU-ITINERANT → VERCORS"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_BELLEDONNE"'>"LDAP://OU=BELLEDONNE,OU=OU-LOCAL,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_BELLEDONNE"'>"SCOPE-DGDSI → OU-LOCAL → BELLEDONNE"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_CHARTREUSE"'>"LDAP://OU=CHARTREUSE,OU=OU-LOCAL,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_CHARTREUSE"'>"SCOPE-DGDSI → OU-LOCAL → CHARTREUSE"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_IMAB"'>"LDAP://OU=IMAB,OU=OU-LOCAL,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_IMAB"'>"SCOPE-DGDSI → OU-LOCAL → IMAB"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_VALENCE"'>"LDAP://OU=VALENCE,OU=OU-LOCAL,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_VALENCE"'>"SCOPE-DGDSI → OU-LOCAL → VALENCE"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_VERCORS"'>"LDAP://OU=VERCORS,OU=OU-LOCAL,OU=SCOPE-DGDSI,OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SubBranchInputChoice_SCOPE-DGDSI_OU-LOCAL%" = "SCOPE-DGDSI_OU-LOCAL_VERCORS"'>"SCOPE-DGDSI → OU-LOCAL → VERCORS"'</Action>
+
+	<!-- VARIABLES ACTIVE DIRECTORY OU ENTITES -->
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+	<!-- VARIABLES ACTIVE DIRECTORY OU LABORATOIRES -->
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+	<!-- VARIABLES ACTIVE DIRECTORY OU UFR -->
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+			<Action Type="TSVar" Name="OSDDomainOUName" Condition='"%SelectOU%" = "ABC"'>"LDAP://OU=U-GA,DC=labloic,DC=local"'</Action>
+				<Action Type="TSVar" Name="SummaryDomainOUName" Condition='"%SelectOU%" = "ABC"'>"ABC"'</Action>
+
+<!-- CHANGE DEFAULT LOCALIZATION SETTINGS -->
+			<ActionGroup Name="Customization" Condition='"%ChangeDefaults%" = "True"'>
+				
+				<!-- CHANGE DEFAULT LANGUAGE -->
+				<Action Type="Input" Name="myInput" Title="Selectionner la langue" ShowBack="True">
+					<InputChoice Variable="UILanguage" AlternateVariable="OSDWindowsSettingsUILanguage" Question="Langue de l'interface utilisateur :" Required="True">
+						<ChoiceList OptionList="%LangList%" AlternateValueList="%LangCodes%"/>
+					</InputChoice>
+					
+				<!-- CHANGE DEFAULT KEYBOARD -->
+					<InputChoice Variable="KeyboardLayout" Question="Disposition du clavier :" Required="True">
+						<ChoiceList OptionList="%KeybList%" AlternateValueList="%KeybCodes%"/>
+					</InputChoice>	
+				</Action>
+
+				<Action Type="Switch" OnValue='%KeyboardLayout%' DontEval="True">
+					<Case RegEx="Français">
+						<Variable Name="UILanguage">"English US"</Variable>
+						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
+						<Variable Name="OSDWindowsSettingsUILanguage">"en-US"</Variable>
+						<Variable Name="OSDWindowsSettingsInputLocale">"fr-FR"</Variable>
+						<Variable Name="OSDWindowsSettingsUserLocale">"en-US"</Variable>
+					</Case>
+					<Case RegEx="English US">
+						<Variable Name="UILanguage">"English US"</Variable>
+						<Variable Name="OSDWindowsSettingsSystemLocale">"en-US"</Variable>
+						<Variable Name="OSDWindowsSettingsUILanguage">"en-US"</Variable>
+						<Variable Name="OSDWindowsSettingsInputLocale">"en-US"</Variable>
+						<Variable Name="OSDWindowsSettingsUserLocale">"en-US"</Variable>
+					</Case>
+				</Action>
+			</ActionGroup>
+
+<!-- SET ADDITIONAL VARIABLES -->
+			<Action Type="TSVar" Name="OSDWindowsSettingsUILanguageFallback">"fr-FR"</Action> 	
+
+<!-- SUMMARY WINDOW -->
+			<Action Type="Info" Name="SummaryWindow" Title="Résumé du déploiement" ShowBack="True">
+				<![CDATA[
+					💻 Nom de l'ordinateur : <b>%OSDComputerName%</b><br>
+					💿 Bundle de base : <b>%BaseBundleStatus%</b><br>
+					🔤 Langue de l'interface utilisateur : <b>%UILanguage%</b><br>
+					⌨️ Disposition du clavier : <b>%KeyboardLayout%</b><br>
+					🗃️ AD OU : <b>%SummaryDomainOUName%</b><br>
+				]]>
+			</Action>
+		</ActionGroup>
+	</Actions>
+</UIpp>
