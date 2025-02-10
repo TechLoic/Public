@@ -7,7 +7,7 @@
 
 <!-- SCAN COMPUTER -->
 		<Action Type="DefaultValues"/>
-		<Action Type="ExternalCall" Title="Getting the computer's name from IPAM ...">PowerShell.exe -ExecutionPolicy ByPass -File .\GetPCName.ps1</Action>
+		<Action Type="ExternalCall" Title="Getting the computer's name from IPAM...">PowerShell.exe -ExecutionPolicy ByPass -File .\GetPCName.ps1</Action>
 
 <!-- START MAIN THREAD -->
 		<ActionGroup Name="MAIN THREAD">
